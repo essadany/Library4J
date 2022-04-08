@@ -16,7 +16,7 @@
             <children>
                 <ImageView fitHeight="167.0" fitWidth="156.0" layoutX="37.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../../resources/icon.png" />
+                        <Image url="@icon.png" />
                     </image>
                 </ImageView>
                 <Label alignment="CENTER" layoutX="7.0" layoutY="242.0" text="Bienvenue à CY-Library !" textFill="WHITE">
