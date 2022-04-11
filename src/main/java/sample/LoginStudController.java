@@ -45,10 +45,6 @@ public class LoginStudController {
             isConnected.setText("adress or password wrong, please try again");
         }
 
-
-
-
-
     }
 
 }
