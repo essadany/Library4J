@@ -17,7 +17,7 @@ public class Connect {
         }
 
     }
-    public Connection connecion(){
+    public Connection connection(){
         return con;
     }
 }
