@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LoginLibController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.user">
     <left>
         <AnchorPane prefHeight="407.0" prefWidth="228.0" style="-fx-background-color: #0343DF;" BorderPane.alignment="CENTER">
             <children>
@@ -42,7 +42,7 @@
                         <Font name="Courant" size="14.0" />
                     </font>
                 </Button>
-                <Button fx:id="connexionButton" layoutX="13.0" layoutY="270.0" mnemonicParsing="false" onAction="#connexion" prefHeight="36.0" prefWidth="262.0" style="-fx-background-color: #0000FF;" text="Connexion" textFill="WHITE">
+                <Button fx:id="connexionButton" layoutX="13.0" layoutY="270.0" mnemonicParsing="false" onAction="#authentificate" prefHeight="36.0" prefWidth="262.0" style="-fx-background-color: #0000FF;" text="Connexion" textFill="WHITE">
                     <font>
                         <Font name="Courant" size="14.0" />
                     </font>

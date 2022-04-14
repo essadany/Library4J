@@ -16,7 +16,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class LoginStudController {
+public class user {
     private Stage stage;
     private Scene scene;
     @FXML
@@ -25,7 +25,7 @@ public class LoginStudController {
     PasswordField inputPwd;
     @FXML
     Label isConnected;
-    public void connexion(ActionEvent event) throws IOException, SQLException {
+    public void authentificate(ActionEvent event) throws IOException, SQLException {
         Connect con = new Connect();
         String sql = "select * from student where adress = ? and password = ? ";
         PreparedStatement stat =con.connection().prepareStatement(sql);
