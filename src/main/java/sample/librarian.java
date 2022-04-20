@@ -1,5 +1,8 @@
 package sample;
 
-public class librarian {
+public class librarian extends user{
+    public librarian(){
+        super();
+    }
 
 }

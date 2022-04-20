@@ -109,32 +109,43 @@ public class user {
         //if the informations of user are corrects
         if (rs.next()) {
             //Set user informations
-            user user = new user();
-            user.userID=rs.getInt("userID");
-            user.first_name=rs.getString("first_name");
-            user.last_name=rs.getString("last_name");
-            user.adress=rs.getString("adress");
-            user.password=pwdEntred;
-            user.role=rs.getString("role");
-            //Show student interface if the user is a sutdent
-            if (user.role.equals("student")){
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/student.fxml"));
-                Parent root = (Parent) loader.load();
-                scene = new Scene(root, 600, 500);
-                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                stage.setScene(scene);
-                stage.show();
-
+            setUserID(rs.getInt("userID"));
+            setAdress(adressEntred);
+            setRole(rs.getString("role"));
+            setPassword(pwdEntred);
+            setFirst_name(rs.getString("first_name"));
+            setLast_name(rs.getString("last_name"));
+            //Show user interface
+            String path;
+            if (getRole().equals("student")){
+                path="/student.fxml";
             } else {
-                //code to do by Al Amin
-                System.out.println(user.getRole());
+                path="/student.fxml";
             }
-
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+            Parent root = (Parent) loader.load();
+            scene = new Scene(root, 600, 500);
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+            stage.show();
         }else {
             isConnected.setText("adress or password wrong, please try again");
-
         }
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/userProfile.fxml"));
+        Parent root = (Parent) loader.load();
+        userProfile controller = loader.getController();
+        controller.SetUserProfile(getUserID(),getFirst_name(),getLast_name(),getAdress());
 
+
+    }
+    //method search to show new Scene to search a book
+    public void search(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/searchBook.fxml"));
+        Parent root = (Parent) loader.load();
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
 }
