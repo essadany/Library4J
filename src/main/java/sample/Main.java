@@ -12,7 +12,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         Parent root = FXMLLoader.load(getClass().getResource("/user.fxml"));
-        Scene scene = new Scene(root, 600, 500);
+        Scene scene = new Scene(root, 1000, 700);
 
         primaryStage.setTitle("CY-Library");
         primaryStage.setScene(scene);
