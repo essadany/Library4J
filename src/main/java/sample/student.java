@@ -24,6 +24,7 @@ public class student extends user {
         stage.setScene(scene);
         stage.show();
     }
+    public void toadd(int a){};
     public void profile(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/userProfile.fxml"));
         Parent root = (Parent) loader.load();
