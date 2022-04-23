@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -120,7 +121,7 @@ public class user {
             if (getRole().equals("student")){
                 path="/student.fxml";
             } else {
-                path="/student.fxml";
+                path="/librarian.fxml";
             }
             FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
             Parent root = (Parent) loader.load();
@@ -131,15 +132,12 @@ public class user {
         }else {
             isConnected.setText("adress or password wrong, please try again");
         }
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/userProfile.fxml"));
-        Parent root = (Parent) loader.load();
-        userProfile controller = loader.getController();
-        controller.SetUserProfile(getUserID(),getFirst_name(),getLast_name(),getAdress());
+
 
 
     }
     //method search to show new Scene to search a book
-    public void search(ActionEvent event) throws IOException {
+    public void search(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/searchBook.fxml"));
         Parent root = (Parent) loader.load();
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
