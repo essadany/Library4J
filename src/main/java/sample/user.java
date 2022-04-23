@@ -19,12 +19,12 @@ import java.sql.SQLException;
 
 public class user {
     //attributs
-    private  String role;
-    private  String password;
-    private  String adress;
-    private  String first_name;
-    private  String last_name;
-    private  int userID;
+    private static String role;
+    private  static String password;
+    private static String adress;
+    private static String first_name;
+    private static String last_name;
+    private static int userID;
     //constroctor
     public user(String role, String password, String adress, String first_name, String last_name, int userID) {
         this.role = role;
