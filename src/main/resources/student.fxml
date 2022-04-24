@@ -1,28 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.student">
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="182.0" fitWidth="158.0" layoutX="123.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="182.0" fitWidth="158.0" layoutX="123.0" layoutY="156.0" onMouseClicked="#profile" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@logouser.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="253.0" fitWidth="225.0" layoutX="375.0" layoutY="121.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="253.0" fitWidth="225.0" layoutX="375.0" layoutY="121.0" onMouseClicked="#search" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@loupe.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="178.0" fitWidth="181.0" layoutX="685.0" layoutY="157.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="178.0" fitWidth="181.0" layoutX="685.0" layoutY="157.0" onMouseClicked="#showLoans" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@book.png" />
                </image>
