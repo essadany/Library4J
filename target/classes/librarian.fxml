@@ -1,14 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="sample.librarian"
-            prefHeight="500.0" prefWidth="600.0">
-
-</AnchorPane>
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <center>
+            <HBox prefHeight="343.0" prefWidth="664.0" spacing="50.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="userProfileButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="202.0" prefWidth="270.0" text="User">
+                     <graphic>
+                        <ImageView fitHeight="151.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@logouser.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Garamond" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="manageUsersButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="202.0" prefWidth="150.0" text="Manage Users">
+                     <font>
+                        <Font name="Garamond" size="24.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="150.0" pickOnBounds="true">
+                           <image>
+                              <Image url="@usersmangaement.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="searchButton2" contentDisplay="TOP" mnemonicParsing="false" prefHeight="200.0" prefWidth="254.0" text="Search">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="142.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@loupe.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Garamond" size="24.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="borrowingLibButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="89.0" prefWidth="196.0" text="Borrowing">
+                     <graphic>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@book.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                     <font>
+                        <Font name="Garamond" size="24.0" />
+                     </font>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets left="50.0" right="50.0" top="250.0" />
+               </padding>
+            </HBox>
+         </center>
+         <bottom>
+            <Button fx:id="disconnectButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="146.0" prefWidth="173.0" text="Disconnect" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="15.0" right="800.0" />
+               </BorderPane.margin>
+               <font>
+                  <Font name="Garamond" size="24.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="96.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@off.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </bottom>
+      </BorderPane>
+   </children>
+</StackPane>

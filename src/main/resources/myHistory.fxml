@@ -13,8 +13,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MyHistory">
    <children>
       <BorderPane prefHeight="642.0" prefWidth="1000.0">
          <StackPane.margin>
@@ -23,15 +22,17 @@
          <center>
             <TableView fx:id="tableBorrowingUser" prefHeight="517.0" prefWidth="733.0" BorderPane.alignment="CENTER">
                <columns>
-                  <TableColumn fx:id="IdBookCol" prefWidth="125.0" text="Id" />
-                  <TableColumn fx:id="NameBookCol" prefWidth="500.0" text="Name" />
-                  <TableColumn fx:id="AuthorBookCol" prefWidth="200.0" text="Author" />
-                  <TableColumn fx:id="AvailBookCol" prefWidth="171.9998779296875" text="Date of render" />
+                  <TableColumn fx:id="IdHistoryCol" prefWidth="100.0" text="Id" />
+                  <TableColumn fx:id="TitleHistoryCol" prefWidth="250.0" text="Title" />
+                  <TableColumn fx:id="AuthorHistoryCol" prefWidth="200.0" text="Author" />
+                  <TableColumn fx:id="EditiondateHistoryCol" prefWidth="100.0" text="Edition date" />
+                  <TableColumn fx:id="LanguageHistoryCol" prefWidth="200.0" text="Language" />
+                  <TableColumn fx:id="DateRenderHistoryCol" prefWidth="171.9998779296875" text="Date of render" />
                </columns>
             </TableView>
          </center>
          <bottom>
-            <Button fx:id="backButtonProfile" contentDisplay="TOP" mnemonicParsing="false" prefHeight="73.0" prefWidth="146.0" text="Back" BorderPane.alignment="CENTER">
+            <Button fx:id="ReturnButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="73.0" prefWidth="146.0" text="Back" BorderPane.alignment="CENTER">
                <font>
                   <Font name="Garamond" size="24.0" />
                </font>
@@ -64,7 +65,7 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <ChoiceBox fx:id="checkBoxBorrowing" prefHeight="70.0" prefWidth="210.0" />
+                  <ChoiceBox fx:id="HistoryChoiceBox" prefHeight="39.0" prefWidth="188.0" />
                </children>
             </HBox>
          </top>
