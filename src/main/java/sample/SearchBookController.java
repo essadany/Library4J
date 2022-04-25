@@ -1,5 +1,6 @@
-/*package sample;
+package sample;
 
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -34,6 +35,7 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Comparator;
 import java.util.ResourceBundle;
 >>>>>>> 28382d25c60e17d41f6d9e9781b854ca435ee395
 
@@ -43,7 +45,7 @@ import java.util.ResourceBundle;
         private TextField filterField;
 
         @FXML
-        private TableColumn<?, ?> AuthorBookCol;
+        private TableColumn<book, String> author;
 
 <<<<<<< HEAD
     @FXML
@@ -56,14 +58,22 @@ import java.util.ResourceBundle;
     private TableColumn<?, ?> EditiondateBookCol;
 =======
         @FXML
+<<<<<<< HEAD
         private TableColumn<?, ?> AvailBookCol;
 >>>>>>> 28382d25c60e17d41f6d9e9781b854ca435ee395
+=======
+        private TableColumn<book, String> status;
+>>>>>>> 7e4dae8f96c5861b76bf28f4372732177feb962d
 
         @FXML
-        private TableColumn<?, ?> IdBookCol;
+        private TableColumn<book, String> id;
 
         @FXML
-        private TableColumn<?, ?> NameBookCol;
+        private TableColumn<book, String> title;
+        @FXML
+        private TableColumn<book, String> language;
+        @FXML
+        private TableColumn<book, String> year;
 
         @FXML
         private Button ReturnButton;
@@ -72,7 +82,7 @@ import java.util.ResourceBundle;
         private Button SearchBookButton;
 
         @FXML
-        private TableView<?> table;
+        private TableView<book> table;
 
         public ObservableList<book> data = FXCollections.observableArrayList();
         @FXML
@@ -103,7 +113,7 @@ import java.util.ResourceBundle;
                 while (errNodes.getLength() > 0) {
                     Element err = (Element)errNodes.item(i);
                     i++;
-                    book book = new book(j,err.getElementsByTagName("dc:creator").item(0).getTextContent(),err.getElementsByTagName("dc:title").item(0).getTextContent(),err.getElementsByTagName("dc:date").item(0).getTextContent(),err.getElementsByTagName("dc:language").item(0).getTextContent());
+                    book book = new book("545sfsf",err.getElementsByTagName("dc:title").item(0).getTextContent(),err.getElementsByTagName("dc:creator").item(0).getTextContent(),"available");
                     System.out.println("author : "+err.getElementsByTagName("dc:creator").item(0).getTextContent());
                     System.out.println("title : "+err.getElementsByTagName("dc:title").item(0).getTextContent());
                     System.out.println("date : "+err.getElementsByTagName("dc:date").item(0).getTextContent());
@@ -120,11 +130,12 @@ import java.util.ResourceBundle;
         }
         @Override
         public void initialize(URL url, ResourceBundle resourceBundle) {
-            id.setCellValueFactory(new PropertyValueFactory<student,String>("ark"));
-            title.setCellValueFactory(new PropertyValueFactory<student,String>("title"));
-            author.setCellValueFactory(new PropertyValueFactory<student,String>("author"));
-            year.setCellValueFactory(new PropertyValueFactory<student,String>("year"));
-            language.setCellValueFactory(new PropertyValueFactory<student,String>("language"));
+            id.setCellValueFactory(new PropertyValueFactory<book,String>("ark"));
+            title.setCellValueFactory(new PropertyValueFactory<book,String>("title"));
+            author.setCellValueFactory(new PropertyValueFactory<book,String>("author"));
+            status.setCellValueFactory(new PropertyValueFactory<book,String>("status"));
+            /*year.setCellValueFactory(new PropertyValueFactory<book,String>("year"));
+            language.setCellValueFactory(new PropertyValueFactory<book,String>("language"));*/
 
 
 
@@ -148,8 +159,8 @@ import java.util.ResourceBundle;
                     } else if (book.getAuthor().toLowerCase().contains(lowerCaseFilter)) {
                         return true; // Filter matches last name.
                     }
-                    else if (book.getYear().contains(lowerCaseFilter))
-                        return true;
+                   /* else if (book.getYear().contains(lowerCaseFilter))
+                        return true;*/
                     else
                         return false; // Does not match.
                 });
@@ -160,7 +171,7 @@ import java.util.ResourceBundle;
 
             // 4. Bind the SortedList comparator to the TableView comparator.
             // 	  Otherwise, sorting the TableView would have no effect.
-            sortedData.comparatorProperty().bind(table.comparatorProperty());
+            sortedData.comparatorProperty().bind((ObservableValue<? extends Comparator<? super book>>) table.comparatorProperty());
 
             // 5. Add sorted (and filtered) data to the table.
             table.setItems(sortedData);
@@ -182,4 +193,3 @@ import java.util.ResourceBundle;
     }
 
 }
-*/
