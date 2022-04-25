@@ -6,15 +6,24 @@ public class book {
     private String author;
     private String year;
     private String language;
+    private String status;
     //constructor
 
 
-    public book(String ark, String title, String author, String year, String language) {
+    public book(String ark, String title, String author, String year, String language,String status) {
         this.ark = ark;
         this.title = title;
         this.author = author;
         this.year = year;
         this.language = language;
+        this.status= status;
+    }
+    public book(String ark,String title,String author,String status){
+        this.ark = ark;
+        this.title = title;
+        this.author = author;
+        this.status = status;
+
     }
 
     //getters and setters
@@ -57,5 +66,13 @@ public class book {
 
     public void setLanguage(String language) {
         this.language = language;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }
