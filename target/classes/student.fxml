@@ -1,14 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="sample.student"
-            prefHeight="500.0" prefWidth="600.0">
-
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.student">
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <ImageView fitHeight="182.0" fitWidth="158.0" layoutX="123.0" layoutY="156.0" onMouseClicked="#profile" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logouser.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="253.0" fitWidth="225.0" layoutX="375.0" layoutY="121.0" onMouseClicked="#search" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@loupe.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="178.0" fitWidth="181.0" layoutX="685.0" layoutY="157.0" onMouseClicked="#showLoans" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@book.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="160.0" layoutY="391.0" prefHeight="53.0" prefWidth="166.0" text="Profil">
+               <font>
+                  <Font name="Garamond" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="706.0" layoutY="391.0" prefHeight="53.0" prefWidth="166.0" text="Mes emprunts">
+               <font>
+                  <Font name="Garamond" size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="425.0" layoutY="391.0" prefHeight="53.0" prefWidth="166.0" text="Recherche">
+               <font>
+                  <Font name="Garamond" size="24.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="100.0" fitWidth="112.0" layoutX="43.0" layoutY="562.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@off.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="177.0" layoutY="585.0" prefHeight="53.0" prefWidth="166.0" text="Déconnexion">
+               <font>
+                  <Font name="Garamond" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
