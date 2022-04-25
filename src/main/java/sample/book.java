@@ -4,16 +4,21 @@ public class book {
     private String ark;
     private String title;
     private String author;
-    private int year;
+    private String year;
+    private String language;
     //constructor
-    public book(String ark, String title, String author, int year) {
+
+
+    public book(String ark, String title, String author, String year, String language) {
         this.ark = ark;
         this.title = title;
         this.author = author;
         this.year = year;
+        this.language = language;
     }
 
     //getters and setters
+
     public String getArk() {
         return ark;
     }
@@ -38,11 +43,19 @@ public class book {
         this.author = author;
     }
 
-    public int getYear() {
+    public String getYear() {
         return year;
     }
 
-    public void setYear(int year) {
+    public void setYear(String year) {
         this.year = year;
+    }
+
+    public String getLanguage() {
+        return language;
+    }
+
+    public void setLanguage(String language) {
+        this.language = language;
     }
 }
