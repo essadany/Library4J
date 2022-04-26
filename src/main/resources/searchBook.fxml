@@ -12,19 +12,12 @@
       <TableView fx:id="table" layoutX="105.0" layoutY="92.0" prefHeight="568.0" prefWidth="801.0">
 >>>>>>> 28382d25c60e17d41f6d9e9781b854ca435ee395
         <columns>
-<<<<<<< HEAD
           <TableColumn fx:id="IdBookCol" prefWidth="75.0" text="Id" />
           <TableColumn fx:id="TitleBookCol" prefWidth="250.0" text="Title" />
             <TableColumn fx:id="AuthorBookCol" prefWidth="200.0" text="Author" />
             <TableColumn fx:id="EditiondateBookCol" prefWidth="100.0" text="Edition date" />
             <TableColumn fx:id="LanguageBookCol" prefWidth="100.0" text="Language" />
             <TableColumn fx:id="AvailBookCol" prefWidth="75.0" text="Available" />
-=======
-          <TableColumn fx:id="id" prefWidth="125.0" text="Id" />
-          <TableColumn fx:id="title" prefWidth="400.0" text="Name" />
-            <TableColumn fx:id="author" prefWidth="200.0" text="Author" />
-            <TableColumn fx:id="status" prefWidth="75.0" text="Availability" />
->>>>>>> 7e4dae8f96c5861b76bf28f4372732177feb962d
         </columns>
       </TableView>
       <Label layoutX="92.0" layoutY="14.0" prefHeight="17.0" prefWidth="138.0" text="Search a Book" />
@@ -40,11 +33,7 @@
             <Image url="@return.png" />
          </image>
       </ImageView>
-<<<<<<< HEAD
       <TextField fx:id="SearchBookTextField" layoutX="175.0" layoutY="10.0" prefHeight="25.0" prefWidth="664.0" promptText="Search..." />
-=======
-      <TextField fx:id="filterField" layoutX="175.0" layoutY="10.0" prefHeight="25.0" prefWidth="664.0" promptText="Search..." />
->>>>>>> 7e4dae8f96c5861b76bf28f4372732177feb962d
       <Label layoutX="105.0" layoutY="46.0" text="Filter" />
       <ChoiceBox fx:id="FilterBookChoiceBox" layoutX="175.0" layoutY="42.0" prefWidth="150.0" />
    </children>
