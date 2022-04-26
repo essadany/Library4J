@@ -137,7 +137,7 @@ public class user {
 
     }
     //method search to show new Scene to search a book
-    public void search(ActionEvent event) throws IOException {
+    public void search(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/searchBook.fxml"));
         Parent root = (Parent) loader.load();
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();

@@ -53,11 +53,7 @@
                   <Image url="@logouser.png" />
                </image>
             </ImageView>
-<<<<<<< HEAD
             <Button fx:id="search1" contentDisplay="TOP" layoutX="220.0" layoutY="486.0" mnemonicParsing="false" onAction="#authentificate" prefHeight="120.0" prefWidth="276.0" style="-fx-background-color: #ead897;" text="Ou faites une recherche ici">
-=======
-            <Button fx:id="search1" contentDisplay="TOP" layoutX="220.0" layoutY="486.0" mnemonicParsing="false" onAction="#search" prefHeight="120.0" prefWidth="276.0" style="-fx-background-color: #ead897;" text="Ou faites une recherche ici">
->>>>>>> 28382d25c60e17d41f6d9e9781b854ca435ee395
                <font>
                   <Font name="Garamond" size="23.0" />
                </font>

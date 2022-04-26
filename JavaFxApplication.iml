@@ -11,7 +11,7 @@
       <excludeFolder url="file://$MODULE_DIR$/${project.build.directory}/test-classes" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <orderEntry type="jdk" jdkName="openjdk-18" jdkType="JavaSDK" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="Maven: com.googlecode.json-simple:json-simple:1.1.1" level="project" />
@@ -29,7 +29,7 @@
         <jarDirectory url="file://$MODULE_DIR$/../NewJavaFxProject/openjfx-18_windows-x64_bin-sdk/javafx-sdk-18/lib" recursive="false" />
       </library>
     </orderEntry>
-    <orderEntry type="module-library" exported="">
+    <orderEntry type="module-library">
       <library>
         <CLASSES>
           <root url="file://$MODULE_DIR$/../../Librairie/javafx-sdk-18/lib" />
@@ -37,16 +37,6 @@
         <JAVADOC />
         <SOURCES />
         <jarDirectory url="file://$MODULE_DIR$/../../Librairie/javafx-sdk-18/lib" recursive="false" />
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/../../Downloads/javafx-sdk-18/lib" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-        <jarDirectory url="file://$MODULE_DIR$/../../Downloads/javafx-sdk-18/lib" recursive="false" />
       </library>
     </orderEntry>
   </component>

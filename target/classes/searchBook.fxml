@@ -12,7 +12,6 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SearchBookController">
    <children>
-<<<<<<< HEAD
       <TableView fx:id="SearchTableView" layoutX="105.0" layoutY="92.0" prefHeight="568.0" prefWidth="801.0">
         <columns>
           <TableColumn fx:id="IdBookCol" prefWidth="125.0" text="Id" />
@@ -20,14 +19,6 @@
             <TableColumn fx:id="AuthorBookCol" prefWidth="200.0" text="Author" />
             <TableColumn fx:id="LanguageBookCol" prefWidth="100.0" text="Language" />
             <TableColumn fx:id="AvailBookCol" prefWidth="75.0" text="Available" />
-=======
-      <TableView layoutX="105.0" layoutY="92.0" prefHeight="568.0" prefWidth="801.0">
-        <columns>
-          <TableColumn fx:id="IdBookCol" prefWidth="125.0" text="Id" />
-          <TableColumn fx:id="NameBookCol" prefWidth="400.0" text="Name" />
-            <TableColumn fx:id="AuthorBookCol" prefWidth="200.0" text="Author" />
-            <TableColumn fx:id="AvailBookCol" prefWidth="75.0" text="Availability" />
->>>>>>> 28382d25c60e17d41f6d9e9781b854ca435ee395
         </columns>
       </TableView>
       <Label layoutX="92.0" layoutY="14.0" prefHeight="17.0" prefWidth="138.0" text="Search a Book" />
@@ -43,14 +34,8 @@
             <Image url="@return.png" />
          </image>
       </ImageView>
-<<<<<<< HEAD
       <TextField fx:id="SearchBookTextField" layoutX="175.0" layoutY="10.0" prefHeight="25.0" prefWidth="664.0" promptText="Search..." />
       <Label layoutX="105.0" layoutY="46.0" text="Filter" />
       <ChoiceBox fx:id="FilterBookChoiceBox" layoutX="175.0" layoutY="42.0" prefWidth="150.0" />
-=======
-      <TextField layoutX="175.0" layoutY="10.0" prefHeight="25.0" prefWidth="664.0" promptText="Search..." />
-      <Label layoutX="105.0" layoutY="46.0" text="Filter" />
-      <ChoiceBox layoutX="175.0" layoutY="42.0" prefWidth="150.0" />
->>>>>>> 28382d25c60e17d41f6d9e9781b854ca435ee395
    </children>
 </Pane>
