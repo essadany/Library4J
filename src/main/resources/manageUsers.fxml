@@ -12,13 +12,14 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.manageUsersController">
     <children>
-        <TableView fx:id="userTable" layoutX="100.0" layoutY="203.0" prefHeight="450.0" prefWidth="801.0">
+        <TableView fx:id="userTable" layoutX="59.0" layoutY="197.0" prefHeight="450.0" prefWidth="885.0">
             <columns>
                 <TableColumn fx:id="id" prefWidth="75.0" text="Id" />
                 <TableColumn fx:id="f_name" prefWidth="200.0" text="First Name" />
             <TableColumn fx:id="l_name" prefWidth="200.0" text="Last Name" />
                 <TableColumn fx:id="adress" prefWidth="225.0" text="Adress" />
                 <TableColumn fx:id="role" prefWidth="100.0" text="Role" />
+            <TableColumn fx:id="action" prefWidth="83.4000244140625" text="Action" />
             </columns>
         </TableView>
         <Label layoutX="92.0" layoutY="14.0" prefHeight="17.0" prefWidth="138.0" text="Search an user" />
