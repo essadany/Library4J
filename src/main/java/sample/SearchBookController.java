@@ -1,12 +1,10 @@
 /*package sample;
 
-<<<<<<< HEAD
-=======
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
->>>>>>> parent of e0be974 (test)
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -16,22 +14,9 @@ import java.util.ResourceBundle;
 
 public class SearchBookController implements Initializable {
 
-    @FXML
-    private TableView<?> SearchTableView;
 
-<<<<<<< HEAD
     @FXML
     private TableColumn<?, ?> AuthorBookCol;
-=======
-import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.StringReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.ResourceBundle;
->>>>>>> 28382d25c60e17d41f6d9e9781b854ca435ee395
->>>>>>> parent of e0be974 (test)
 
     @FXML
     private TableColumn<?, ?> AvailBookCol;
@@ -39,13 +24,9 @@ import java.util.ResourceBundle;
     @FXML
     private TableColumn<?, ?> IdBookCol;
 
-<<<<<<< HEAD
-=======
         @FXML
         private TableColumn<?, ?> AuthorBookCol;
 
-<<<<<<< HEAD
->>>>>>> parent of e0be974 (test)
     @FXML
     private TableColumn<?, ?> TitleBookCol;
 
@@ -54,32 +35,15 @@ import java.util.ResourceBundle;
 
     @FXML
     private TableColumn<?, ?> EditiondateBookCol;
-<<<<<<< HEAD
+
 
     @FXML
     private Button ReturnButton;
 
     @FXML
     private Button SearchBookButton;
-=======
-=======
-        @FXML
-        private TableColumn<?, ?> AvailBookCol;
->>>>>>> 28382d25c60e17d41f6d9e9781b854ca435ee395
 
-        @FXML
-        private TableColumn<?, ?> IdBookCol;
 
-        @FXML
-        private TableColumn<?, ?> NameBookCol;
-
-        @FXML
-        private Button ReturnButton;
-
-        @FXML
-        private Button SearchBookButton;
-
-        @FXML
         private TableView<?> table;
 
         public ObservableList<book> data = FXCollections.observableArrayList();

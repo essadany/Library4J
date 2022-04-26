@@ -1,6 +1,7 @@
 package sample;
 
 public class book {
+    private String status;
     private String ark;
     private String title;
     private String author;
@@ -9,15 +10,26 @@ public class book {
     //constructor
 
 
-    public book(String ark, String title, String author, String year, String language) {
+    public book(String ark, String title, String author, String year, String language,String status) {
         this.ark = ark;
         this.title = title;
         this.author = author;
         this.year = year;
         this.language = language;
+        this.status = status;
     }
 
+
     //getters and setters
+
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public String getArk() {
         return ark;
