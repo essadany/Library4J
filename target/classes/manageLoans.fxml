@@ -17,7 +17,7 @@
 
 <TabPane fx:id="loansPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
   <tabs>
-    <Tab text="Issue a book">
+    <Tab fx:id="issue1Tab" text="Issue a book">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -32,15 +32,15 @@
                         <Label layoutX="16.0" layoutY="121.0" text="Title" />
                         <Label layoutX="16.0" layoutY="168.0" text="Author" />
                         <Label layoutX="13.0" layoutY="214.0" text="Language" />
-                        <TextField layoutX="102.0" layoutY="41.0" prefWidth="150.0" />
-                        <TextField layoutX="102.0" layoutY="117.0" prefHeight="26.0" prefWidth="200.0" />
-                        <TextField layoutX="102.0" layoutY="164.0" prefWidth="200.0" />
-                        <TextField layoutX="102.0" layoutY="210.0" prefWidth="150.0" />
-                        <Button layoutX="262.0" layoutY="41.0" mnemonicParsing="false" text="Search" />
+                        <TextField fx:id="issue1BookId" layoutX="102.0" layoutY="41.0" prefWidth="150.0" />
+                        <TextField fx:id="issue1Title" layoutX="102.0" layoutY="117.0" prefHeight="26.0" prefWidth="200.0" />
+                        <TextField fx:id="issue1Author" layoutX="102.0" layoutY="164.0" prefWidth="200.0" />
+                        <TextField fx:id="issue1Language" layoutX="102.0" layoutY="210.0" prefWidth="150.0" />
+                        <Button fx:id="issue1SearchBookButton" layoutX="262.0" layoutY="41.0" mnemonicParsing="false" text="Search" />
                         <Label layoutX="15.0" layoutY="328.0" text="Available" />
-                        <Text layoutX="100.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Availability" wrappingWidth="133.3367156982422" />
+                        <Text fx:id="issue1Availability" layoutX="100.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Availability" wrappingWidth="133.3367156982422" />
                         <Label layoutX="13.0" layoutY="278.0" text="Date of edition" />
-                        <DatePicker layoutX="102.0" layoutY="274.0" prefHeight="26.0" prefWidth="150.0" />
+                        <DatePicker fx:id="issue1DateOfEdition" layoutX="102.0" layoutY="274.0" prefHeight="26.0" prefWidth="150.0" />
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="480.0" layoutY="136.0" prefHeight="403.0" prefWidth="334.0" style="-fx-background-color: #CCCCCC;">
@@ -49,13 +49,13 @@
                         <Label layoutX="13.0" layoutY="121.0" text="First Name" />
                         <Label layoutX="12.0" layoutY="168.0" text="Last Name " />
                         <Label layoutX="14.0" layoutY="214.0" text="Adress" />
-                        <TextField layoutX="92.0" layoutY="41.0" />
-                        <TextField layoutX="92.0" layoutY="117.0" />
-                        <TextField layoutX="92.0" layoutY="164.0" />
-                        <TextField layoutX="92.0" layoutY="210.0" prefWidth="200.0" />
-                        <Button layoutX="258.0" layoutY="41.0" mnemonicParsing="false" text="Search" />
+                        <TextField fx:id="issue1Studentid" layoutX="92.0" layoutY="41.0" />
+                        <TextField fx:id="issue1FirstName" layoutX="92.0" layoutY="117.0" />
+                        <TextField fx:id="issue1LastName" layoutX="92.0" layoutY="164.0" />
+                        <TextField fx:id="issue1Adress" layoutX="92.0" layoutY="210.0" prefWidth="200.0" />
+                        <Button fx:id="issue1SearchStudentButton" layoutX="258.0" layoutY="41.0" mnemonicParsing="false" text="Search" />
                         <Label layoutX="14.0" layoutY="264.0" text="Role" />
-                        <TextField layoutX="92.0" layoutY="260.0" />
+                        <TextField fx:id="issue1Role" layoutX="92.0" layoutY="260.0" />
                      </children>
                   </AnchorPane>
                   <Label layoutX="500.0" layoutY="78.0" prefHeight="18.0" prefWidth="181.0" text="Student details">
@@ -63,11 +63,11 @@
                         <Font name="System Bold" size="23.0" />
                      </font>
                   </Label>
-                  <Button layoutX="375.0" layoutY="594.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="158.0" text="Issue" />
-                  <DatePicker layoutX="373.0" layoutY="556.0" prefHeight="26.0" prefWidth="160.0" />
+                  <Button fx:id="issue1issueButton" layoutX="375.0" layoutY="594.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="158.0" text="Issue" />
+                  <DatePicker fx:id="issue1DateIssue" layoutX="373.0" layoutY="556.0" prefHeight="26.0" prefWidth="160.0" />
                   <Label layoutX="284.0" layoutY="561.0" text="Date of Issue" />
                   <Button fx:id="ReturnButton2" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="54.0" />
-                  <ImageView fitHeight="25.0" fitWidth="38.0" layoutX="28.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="issue1BackButton" fitHeight="25.0" fitWidth="38.0" layoutX="28.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@return.png" />
                      </image>
@@ -75,7 +75,7 @@
                </children></AnchorPane>
       </content>
     </Tab>
-    <Tab text="Return a book">
+    <Tab fx:id="return1Tab" text="Return a book">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
@@ -86,24 +86,24 @@
                         <Label layoutX="45.0" layoutY="176.0" text="Last name" />
                         <Label layoutX="45.0" layoutY="236.0" text="Adress" />
                         <Label layoutX="45.0" layoutY="300.0" text="Role" />
-                        <TextField layoutX="137.0" layoutY="32.0" />
-                        <TextField layoutX="137.0" layoutY="107.0" />
-                        <TextField layoutX="138.0" layoutY="172.0" />
-                        <TextField layoutX="139.0" layoutY="232.0" />
-                        <TextField layoutX="138.0" layoutY="296.0" />
-                        <Button layoutX="333.0" layoutY="32.0" mnemonicParsing="false" text="Search" />
+                        <TextField fx:id="return1Studentid" layoutX="137.0" layoutY="32.0" />
+                        <TextField fx:id="return1FirstName" layoutX="137.0" layoutY="107.0" />
+                        <TextField fx:id="return1LastName" layoutX="138.0" layoutY="172.0" />
+                        <TextField fx:id="return1Adress" layoutX="139.0" layoutY="232.0" />
+                        <TextField fx:id="return1Role" layoutX="138.0" layoutY="296.0" />
+                        <Button fx:id="return1SearchButton" layoutX="333.0" layoutY="32.0" mnemonicParsing="false" text="Search" />
                         <Label layoutX="456.0" layoutY="36.0" text="Book ID" />
                         <Label layoutX="456.0" layoutY="111.0" text="Title" />
                         <Label layoutX="456.0" layoutY="176.0" text="Author" />
                         <Label layoutX="458.0" layoutY="236.0" text="Language" />
                         <Label layoutX="458.0" layoutY="300.0" text="Date of edition" />
                         <Label layoutX="458.0" layoutY="358.0" text="Date of Issue" />
-                        <TextField layoutX="591.0" layoutY="32.0" />
-                        <TextField layoutX="591.0" layoutY="107.0" />
-                        <TextField layoutX="591.0" layoutY="172.0" />
-                        <TextField layoutX="591.0" layoutY="232.0" />
-                        <DatePicker layoutX="591.0" layoutY="296.0" />
-                        <DatePicker layoutX="592.0" layoutY="354.0" />
+                        <TextField fx:id="return1Bookid" layoutX="591.0" layoutY="32.0" />
+                        <TextField fx:id="return1Title" layoutX="591.0" layoutY="107.0" />
+                        <TextField fx:id="return1Author" layoutX="591.0" layoutY="172.0" />
+                        <TextField fx:id="return1Language" layoutX="591.0" layoutY="232.0" />
+                        <DatePicker fx:id="return1DateOfEdition" layoutX="591.0" layoutY="296.0" />
+                        <DatePicker fx:id="return1DateOfIssue" layoutX="592.0" layoutY="354.0" />
                      </children>
                   </AnchorPane>
                   <Label layoutX="102.0" layoutY="58.0" text="Return Panel">
@@ -112,9 +112,9 @@
                      </font>
                   </Label>
                   <Label layoutX="322.0" layoutY="578.0" text="Return date" />
-                  <DatePicker layoutX="412.0" layoutY="574.0" />
-                  <Button layoutX="410.0" layoutY="618.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="179.0" text="Return" />
-                  <Button fx:id="ReturnButton3" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="54.0" />
+                  <DatePicker fx:id="return1ReturnDate" layoutX="412.0" layoutY="574.0" />
+                  <Button fx:id="return1ReturnButton" layoutX="410.0" layoutY="618.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="179.0" text="Return" />
+                  <Button fx:id="return1BackButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="54.0" />
                   <ImageView fitHeight="25.0" fitWidth="38.0" layoutX="28.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@return.png" />
@@ -123,11 +123,11 @@
                </children></AnchorPane>
       </content>
     </Tab>
-      <Tab text="Issue table">
+      <Tab fx:id="issue2Tab" text="Issue table">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TableView fx:id="SearchTableView" layoutX="20.0" layoutY="83.0" prefHeight="568.0" prefWidth="958.0">
+                  <TableView fx:id="issue2SearchTableView" layoutX="20.0" layoutY="83.0" prefHeight="568.0" prefWidth="958.0">
                      <columns>
                         <TableColumn fx:id="IdBookCol" prefWidth="75.0" text="Book ID" />
                         <TableColumn fx:id="titile" prefWidth="150.0" text="Title" />
@@ -143,29 +143,29 @@
                         <TableColumn prefWidth="75.0" text="Limit date" />
                      </columns>
                   </TableView>
-                  <Button fx:id="SearchBookButton" layoutX="891.0" layoutY="30.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="54.0" />
+                  <Button fx:id="issue2SearchButton" layoutX="891.0" layoutY="30.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="54.0" />
                   <ImageView fitHeight="31.0" fitWidth="36.0" layoutX="905.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@loupe.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="ReturnButton" layoutX="13.0" layoutY="9.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="54.0" />
+                  <Button fx:id="issue2returnButton" layoutX="13.0" layoutY="9.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="54.0" />
                   <ImageView fitHeight="25.0" fitWidth="38.0" layoutX="27.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@return.png" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="filterField" layoutX="123.0" layoutY="30.0" prefHeight="26.0" prefWidth="622.0" promptText="Search an issued book..." />
+                  <TextField fx:id="issue2SearchBar" layoutX="123.0" layoutY="30.0" prefHeight="26.0" prefWidth="622.0" promptText="Search an issued book..." />
                   <Label layoutX="762.0" layoutY="34.0" text="Filter" />
-                  <ChoiceBox fx:id="FilterBookChoiceBox" layoutX="805.0" layoutY="30.0" prefHeight="26.0" prefWidth="64.0" />
+                  <ChoiceBox fx:id="issue2FilterChoiceBox" layoutX="805.0" layoutY="30.0" prefHeight="26.0" prefWidth="64.0" />
                </children></AnchorPane>
         </content>
       </Tab>
-      <Tab text="Return table">
+      <Tab fx:id="return2Tab" text="Return table">
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TableView fx:id="SearchTableView1" layoutX="20.0" layoutY="83.0" prefHeight="568.0" prefWidth="958.0">
+                  <TableView fx:id="return2TableView" layoutX="20.0" layoutY="83.0" prefHeight="568.0" prefWidth="958.0">
                      <columns>
                         <TableColumn fx:id="IdBookCol1" prefWidth="75.0" text="Book ID" />
                         <TableColumn fx:id="titile1" prefWidth="150.0" text="Title" />
@@ -181,21 +181,21 @@
                         <TableColumn prefWidth="75.0" text="Return date" />
                      </columns>
                   </TableView>
-                  <Button fx:id="SearchBookButton1" layoutX="891.0" layoutY="30.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="54.0" />
+                  <Button fx:id="return2SearchButton" layoutX="891.0" layoutY="30.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="54.0" />
                   <ImageView fitHeight="31.0" fitWidth="36.0" layoutX="905.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@loupe.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="ReturnButton1" layoutX="13.0" layoutY="9.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="54.0" />
+                  <Button fx:id="return2returnButton" layoutX="13.0" layoutY="9.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="54.0" />
                   <ImageView fitHeight="25.0" fitWidth="38.0" layoutX="27.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@return.png" />
                      </image>
                   </ImageView>
-                  <TextField fx:id="filterField1" layoutX="123.0" layoutY="30.0" prefHeight="26.0" prefWidth="622.0" promptText="Search a returned book..." />
+                  <TextField fx:id="return2SearchBar" layoutX="123.0" layoutY="30.0" prefHeight="26.0" prefWidth="622.0" promptText="Search a returned book..." />
                   <Label layoutX="761.0" layoutY="34.0" text="Filter" />
-                  <ChoiceBox fx:id="FilterBookChoiceBox1" layoutX="806.0" layoutY="30.0" prefHeight="26.0" prefWidth="64.0" />
+                  <ChoiceBox fx:id="return2FilterChoiceBox" layoutX="806.0" layoutY="30.0" prefHeight="26.0" prefWidth="64.0" />
                </children></AnchorPane>
         </content>
       </Tab>

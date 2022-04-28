@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
@@ -22,6 +23,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
 public class SearchBookController implements Initializable {
+    setScene scene = new setScene();
 
     @FXML
     private ComboBox choiceBook;
@@ -120,10 +122,10 @@ public class SearchBookController implements Initializable {
                 i++;
 
 
-               /* System.out.println("author : "+err.getElementsByTagName("dc:creator").item(0).getTextContent());
+                System.out.println("author : "+err.getElementsByTagName("dc:creator").item(0).getTextContent());
                 System.out.println("title : "+err.getElementsByTagName("dc:title").item(0).getTextContent());
                 System.out.println("date : "+err.getElementsByTagName("dc:date").item(0).getTextContent());
-                System.out.println("language : "+err.getElementsByTagName("dc:language").item(1).getTextContent());*/
+                System.out.println("language : "+err.getElementsByTagName("dc:language").item(1).getTextContent());
             }
             // success
 
@@ -145,5 +147,9 @@ public class SearchBookController implements Initializable {
         table.setItems(data);
         choiceBook.setItems(list);
 
+    }
+    @FXML
+    void backInterface(ActionEvent event) throws IOException {
+        scene.disconnect(event);
     }
 }

@@ -90,15 +90,15 @@ public class user {
         this.userID = userID;
     }
     //method authentificate
-    private Stage stage;
-    private Scene scene;
+
     @FXML
-    TextField inputAdress;
+    private TextField  inputAdress;
     @FXML
     PasswordField inputPwd;
     @FXML
     Label isConnected;
     Connect con = new Connect();
+    setScene scene= new setScene();
     public void authentificate(ActionEvent event) throws IOException, SQLException {
         String sql = "select * from users where adress = ? and password = ? ";
         PreparedStatement stat = con.connection().prepareStatement(sql);
@@ -109,26 +109,14 @@ public class user {
         ResultSet rs = stat.executeQuery();
         //if the informations of user are corrects
         if (rs.next()) {
-            //Set user informations
-            setUserID(rs.getInt("userID"));
-            setAdress(adressEntred);
-            setRole(rs.getString("role"));
-            setPassword(pwdEntred);
-            setFirst_name(rs.getString("first_name"));
-            setLast_name(rs.getString("last_name"));
-            //Show user interface
             String path;
+            //Show user interface
             if (getRole().equals("student")){
                 path="/student.fxml";
             } else {
                 path="/librarian.fxml";
             }
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
-            Parent root = (Parent) loader.load();
-            scene = new Scene(root, 600, 500);
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-            stage.show();
+            scene.setScene(event,path);
         }else {
             isConnected.setText("adress or password wrong, please try again");
         }
@@ -136,34 +124,10 @@ public class user {
 
 
     }
-    //userProfile
-    public void userProfile(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/userProfile.fxml"));
-        Parent root = (Parent) loader.load();
-        userProfile controller = loader.getController();
-        controller.SetUserProfile(getUserID(),getFirst_name(),getLast_name(),getAdress());
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
+
     //method search to show new Scene to search a book
     public void searchBook(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/searchBook.fxml"));
-        Parent root = (Parent) loader.load();
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
-    public void disconnect(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/user.fxml"));
-        Parent root = (Parent) loader.load();
-        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
+        scene.setScene(event,"/searchBook.fxml");
     }
 
 }

@@ -12,6 +12,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class student extends user {
     public student(){
@@ -29,10 +30,12 @@ public class student extends user {
 
     @FXML
     private Button userProfile;
+    //setScene instance :
+    setScene scene = new setScene();
 
     @FXML
     public void disconnect(ActionEvent event) throws IOException {
-        user.disconnect(event);
+        scene.disconnect(event);
 
     }
 
@@ -40,24 +43,18 @@ public class student extends user {
 
     @FXML
     public void searchBook(ActionEvent event) throws IOException {
-        user.searchBook(event);
+        scene.setScene(event,"/searchBook.fxml");
 
     }
 
     @FXML
-    public void userProfile(ActionEvent event) throws IOException {
-        user.userProfile(event);
+    public void userProfile(ActionEvent event) throws IOException, SQLException {
+        scene.setScene(event,"/userProfile.fxml");
 
     }
     @FXML
     public void getBorrowInf(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/myHistory.fxml"));
-        Parent root = (Parent) loader.load();
-        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-
+        scene.setScene(event,"/myHistory.fxml");
     }
 
 

@@ -11,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class librarian extends user{
     public librarian(){
@@ -33,29 +34,31 @@ public class librarian extends user{
     private Button userProfileButton;
     @FXML
     public void disconnect(ActionEvent event) throws IOException {
-        user.disconnect(event);
+        scene.disconnect(event);
 
     }
 
     @FXML
-    public void getBorrowInf(ActionEvent event) {
+    public void getBorrowInf(ActionEvent event) throws IOException {
+        scene.setScene(event,"/manageLonas.fxml");
 
     }
 
     @FXML
-    public void manageUser(ActionEvent event) {
+    public void manageUser(ActionEvent event) throws IOException {
+        scene.setScene(event,"/manageUsers.fxml");
 
     }
 
     @FXML
     public void searchBook(ActionEvent event) throws IOException {
-        user.searchBook(event);
+        scene.setScene(event,"/searchBook.fxml");
 
     }
 
     @FXML
-    public void userProfile(ActionEvent event) throws IOException {
-        user.userProfile(event);
+    public void userProfile(ActionEvent event) throws IOException, SQLException {
+        scene.setScene(event,"/userProfile.fxml");
 
     }
 

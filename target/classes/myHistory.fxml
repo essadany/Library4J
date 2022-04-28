@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MyHistory">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MyHistory">
    <children>
       <BorderPane prefHeight="642.0" prefWidth="1000.0">
          <StackPane.margin>
@@ -32,7 +25,7 @@
             </TableView>
          </center>
          <bottom>
-            <Button fx:id="ReturnButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="73.0" prefWidth="146.0" text="Back" BorderPane.alignment="CENTER">
+            <Button fx:id="ReturnButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#backScene" prefHeight="73.0" prefWidth="146.0" text="Back" BorderPane.alignment="CENTER">
                <font>
                   <Font name="Garamond" size="24.0" />
                </font>

@@ -56,7 +56,7 @@
             </VBox>
          </center>
          <bottom>
-            <Button fx:id="disconnectButtonProfile" contentDisplay="TOP" mnemonicParsing="false" prefHeight="146.0" prefWidth="173.0" text="Disconnect" BorderPane.alignment="CENTER">
+            <Button fx:id="disconnectButtonProfile" onAction="#disconnect" contentDisplay="TOP" mnemonicParsing="false" prefHeight="146.0" prefWidth="173.0" text="Disconnect" BorderPane.alignment="CENTER">
                <font>
                   <Font name="Garamond" size="24.0" />
                </font>
@@ -73,7 +73,7 @@
             </Button>
          </bottom>
       </BorderPane>
-      <BorderPane onMouseClicked="#disconnect" prefHeight="200.0" prefWidth="200.0">
+      <BorderPane  prefHeight="200.0" prefWidth="200.0">
          <bottom>
             <Button fx:id="backButtonProfile" contentDisplay="TOP" mnemonicParsing="false" onAction="#profileBack" prefHeight="146.0" prefWidth="173.0" text="Back" BorderPane.alignment="CENTER">
                <font>
