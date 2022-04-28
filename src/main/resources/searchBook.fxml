@@ -5,32 +5,32 @@
 <?import javafx.scene.layout.*?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SearchBookController">
-   <children>
-      <TableView fx:id="SearchTableView" layoutX="105.0" layoutY="92.0" prefHeight="568.0" prefWidth="801.0">
-        <columns>
-          <TableColumn fx:id="IdBookCol" prefWidth="75.0" text="Id" />
-          <TableColumn fx:id="titile" prefWidth="250.0" text="Title" />
-            <TableColumn fx:id="author" prefWidth="200.0" text="Author" />
-            <TableColumn fx:id="date" prefWidth="100.0" text="Edition date" />
-            <TableColumn fx:id="language" prefWidth="100.0" text="Language" />
-            <TableColumn fx:id="id" prefWidth="75.0" text="Available" />
-        </columns>
-      </TableView>
-      <Label layoutX="92.0" layoutY="14.0" prefHeight="17.0" prefWidth="138.0" text="Search a Book" />
-      <Button fx:id="SearchBookButton" layoutX="852.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="54.0" />
-      <ImageView fx:id="filter" fitHeight="31.0" fitWidth="36.0" layoutX="866.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@loupe.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="ReturnButton" layoutY="1.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="54.0" />
-      <ImageView fitHeight="25.0" fitWidth="38.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@return.png" />
-         </image>
-      </ImageView>
-      <TextField fx:id="filterField" layoutX="175.0" layoutY="10.0" prefHeight="25.0" prefWidth="664.0" promptText="Search..." />
-      <Label layoutX="105.0" layoutY="46.0" text="Filter" />
-      <ChoiceBox fx:id="FilterBookChoiceBox" layoutX="175.0" layoutY="42.0" prefWidth="150.0" />
-   </children>
+    <children>
+        <TableView fx:id="table" layoutX="105.0" layoutY="92.0" prefHeight="568.0" prefWidth="801.0">
+            <columns>
+                <TableColumn fx:id="id" prefWidth="75.0" text="Id" />
+                <TableColumn fx:id="title" prefWidth="250.0" text="Title" />
+                <TableColumn fx:id="author" prefWidth="200.0" text="Author" />
+                <TableColumn fx:id="date" prefWidth="100.0" text="Edition date" />
+                <TableColumn fx:id="language" prefWidth="100.0" text="Language" />
+                <TableColumn fx:id="status" prefWidth="75.0" text="Available" />
+            </columns>
+        </TableView>
+        <Label layoutX="92.0" layoutY="14.0" prefHeight="17.0" prefWidth="138.0" text="Search a Book" />
+        <Button fx:id="SearchBookButton" layoutX="852.0" layoutY="10.0" mnemonicParsing="false" onAction="#filter" prefHeight="25.0" prefWidth="54.0" />
+        <ImageView fitHeight="31.0" fitWidth="36.0" layoutX="866.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@loupe.png" />
+            </image>
+        </ImageView>
+        <Button fx:id="ReturnButton" layoutY="1.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="54.0" />
+        <ImageView fitHeight="25.0" fitWidth="38.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@return.png" />
+            </image>
+        </ImageView>
+        <TextField fx:id="filterField" layoutX="175.0" layoutY="10.0" prefHeight="25.0" prefWidth="664.0" promptText="Search..." />
+        <Label layoutX="105.0" layoutY="46.0" text="Filter" />
+        <ComboBox fx:id="choiceBook" layoutX="175.0" layoutY="42.0" prefWidth="150.0" />
+    </children>
 </Pane>
