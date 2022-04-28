@@ -9,13 +9,13 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.student">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <center>
             <HBox prefHeight="343.0" prefWidth="664.0" spacing="50.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button fx:id="userProfile" contentDisplay="TOP" mnemonicParsing="false" prefHeight="182.0" prefWidth="191.0" text="User">
+                  <Button fx:id="userProfile" contentDisplay="TOP" mnemonicParsing="false" onAction="#userProfile" prefHeight="182.0" prefWidth="191.0" text="User">
                      <graphic>
                         <ImageView fitHeight="151.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -27,7 +27,7 @@
                         <Font name="Garamond" size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:id="searchButton2" contentDisplay="TOP" mnemonicParsing="false" prefHeight="89.0" prefWidth="195.0" text="Search">
+                  <Button fx:id="searchButton2" contentDisplay="TOP" mnemonicParsing="false" onAction="#searchBook" prefHeight="89.0" prefWidth="195.0" text="Search">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -39,7 +39,7 @@
                         <Font name="Garamond" size="24.0" />
                      </font>
                   </Button>
-                  <Button fx:id="borrowing" contentDisplay="TOP" mnemonicParsing="false" prefHeight="89.0" prefWidth="196.0" text="Borrowing">
+                  <Button fx:id="borrowing" contentDisplay="TOP" mnemonicParsing="false" onAction="#getBorrowInf" prefHeight="89.0" prefWidth="196.0" text="Borrowing">
                      <graphic>
                         <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -58,7 +58,7 @@
             </HBox>
          </center>
          <bottom>
-            <Button fx:id="disconnectButton" contentDisplay="TOP" mnemonicParsing="false" prefHeight="146.0" prefWidth="173.0" text="Disconnect" BorderPane.alignment="CENTER">
+            <Button fx:id="disconnectButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#disconnect" prefHeight="146.0" prefWidth="173.0" text="Disconnect" BorderPane.alignment="CENTER">
                <BorderPane.margin>
                   <Insets bottom="15.0" right="800.0" />
                </BorderPane.margin>

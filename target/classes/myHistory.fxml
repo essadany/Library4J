@@ -22,9 +22,10 @@
          <center>
             <TableView fx:id="tableBorrowingUser" prefHeight="517.0" prefWidth="733.0" BorderPane.alignment="CENTER">
                <columns>
-                  <TableColumn fx:id="IdHistoryCol" prefWidth="125.0" text="Id" />
-                  <TableColumn fx:id="TitleHistoryCol" prefWidth="300.0" text="Title" />
+                  <TableColumn fx:id="IdHistoryCol" prefWidth="100.0" text="Id" />
+                  <TableColumn fx:id="TitleHistoryCol" prefWidth="250.0" text="Title" />
                   <TableColumn fx:id="AuthorHistoryCol" prefWidth="200.0" text="Author" />
+                  <TableColumn fx:id="EditiondateHistoryCol" prefWidth="100.0" text="Edition date" />
                   <TableColumn fx:id="LanguageHistoryCol" prefWidth="200.0" text="Language" />
                   <TableColumn fx:id="DateRenderHistoryCol" prefWidth="171.9998779296875" text="Date of render" />
                </columns>

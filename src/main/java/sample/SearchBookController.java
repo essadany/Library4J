@@ -1,4 +1,4 @@
-/*package sample;
+package sample;
 
 
 import javafx.collections.FXCollections;
@@ -12,7 +12,7 @@ import javafx.scene.control.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class SearchBookController implements Initializable {
+public class SearchBookController {
 
 
     @FXML
@@ -23,9 +23,6 @@ public class SearchBookController implements Initializable {
 
     @FXML
     private TableColumn<?, ?> IdBookCol;
-
-        @FXML
-        private TableColumn<?, ?> AuthorBookCol;
 
     @FXML
     private TableColumn<?, ?> TitleBookCol;
@@ -44,10 +41,10 @@ public class SearchBookController implements Initializable {
     private Button SearchBookButton;
 
 
-        private TableView<?> table;
+        private TableView<book> table;
 
         public ObservableList<book> data = FXCollections.observableArrayList();
-        @FXML
+       /* @FXML
         void filter(MouseEvent event) {
             String creator = "Victor%20Hugo";
             try {
@@ -138,8 +135,6 @@ public class SearchBookController implements Initializable {
             table.setItems(sortedData);
 
         }
->>>>>>> parent of e0be974 (test)
-
     @FXML
     private TextField SearchBookTextField;
 
@@ -152,7 +147,6 @@ public class SearchBookController implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1){
 
         FilterBookChoiceBox.getItems().addAll(options);
-    }
+    }*/
 
 }
-*/

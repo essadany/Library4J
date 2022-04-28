@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.userProfile">
    <children>
       <BorderPane prefHeight="200.0" prefWidth="200.0">
          <center>
@@ -24,22 +24,27 @@
                         <Image url="@logouser.png" />
                      </image>
                   </ImageView>
-                  <Text fx:id="nameProfile" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+                  <Text fx:id="userID" layoutX="10.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID">
                      <font>
                         <Font name="Garamond" size="24.0" />
                      </font>
                   </Text>
-                  <Text fx:id="fornameProfile" strokeType="OUTSIDE" strokeWidth="0.0" text="Forname">
+                  <Text fx:id="first_name" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
                      <font>
                         <Font name="Garamond" size="24.0" />
                      </font>
                   </Text>
-                  <Text fx:id="eMailProfile" strokeType="OUTSIDE" strokeWidth="0.0" text="eMail">
+                  <Text fx:id="last_name" strokeType="OUTSIDE" strokeWidth="0.0" text="Forname">
                      <font>
                         <Font name="Garamond" size="24.0" />
                      </font>
                   </Text>
-                  <Text fx:id="roleProfile" strokeType="OUTSIDE" strokeWidth="0.0" text="Role">
+                  <Text fx:id="adress" strokeType="OUTSIDE" strokeWidth="0.0" text="eMail">
+                     <font>
+                        <Font name="Garamond" size="24.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="role" strokeType="OUTSIDE" strokeWidth="0.0" text="Role">
                      <font>
                         <Font name="Garamond" size="24.0" />
                      </font>
@@ -68,9 +73,9 @@
             </Button>
          </bottom>
       </BorderPane>
-      <BorderPane prefHeight="200.0" prefWidth="200.0">
+      <BorderPane onMouseClicked="#disconnect" prefHeight="200.0" prefWidth="200.0">
          <bottom>
-            <Button fx:id="backButtonProfile" contentDisplay="TOP" mnemonicParsing="false" prefHeight="146.0" prefWidth="173.0" text="Back" BorderPane.alignment="CENTER">
+            <Button fx:id="backButtonProfile" contentDisplay="TOP" mnemonicParsing="false" onAction="#profileBack" prefHeight="146.0" prefWidth="173.0" text="Back" BorderPane.alignment="CENTER">
                <font>
                   <Font name="Garamond" size="24.0" />
                </font>
