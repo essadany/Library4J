@@ -1,44 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SearchBookController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SearchBookController">
    <children>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
->>>>>>> parent of e0be974 (test)
       <TableView fx:id="SearchTableView" layoutX="105.0" layoutY="92.0" prefHeight="568.0" prefWidth="801.0">
         <columns>
-          <TableColumn fx:id="IdBookCol" prefWidth="125.0" text="Id" />
-          <TableColumn fx:id="TitleBookCol" prefWidth="300.0" text="Title" />
-            <TableColumn fx:id="AuthorBookCol" prefWidth="200.0" text="Author" />
-            <TableColumn fx:id="LanguageBookCol" prefWidth="100.0" text="Language" />
-            <TableColumn fx:id="AvailBookCol" prefWidth="75.0" text="Available" />
-<<<<<<< HEAD
-=======
-=======
-      <TableView layoutX="105.0" layoutY="92.0" prefHeight="568.0" prefWidth="801.0">
-        <columns>
-          <TableColumn fx:id="IdBookCol" prefWidth="125.0" text="Id" />
-          <TableColumn fx:id="NameBookCol" prefWidth="400.0" text="Name" />
-            <TableColumn fx:id="AuthorBookCol" prefWidth="200.0" text="Author" />
-            <TableColumn fx:id="AvailBookCol" prefWidth="75.0" text="Availability" />
->>>>>>> 28382d25c60e17d41f6d9e9781b854ca435ee395
->>>>>>> parent of e0be974 (test)
+          <TableColumn fx:id="IdBookCol" prefWidth="75.0" text="Id" />
+          <TableColumn fx:id="titile" prefWidth="250.0" text="Title" />
+            <TableColumn fx:id="author" prefWidth="200.0" text="Author" />
+            <TableColumn fx:id="date" prefWidth="100.0" text="Edition date" />
+            <TableColumn fx:id="language" prefWidth="100.0" text="Language" />
+            <TableColumn fx:id="id" prefWidth="75.0" text="Available" />
         </columns>
       </TableView>
       <Label layoutX="92.0" layoutY="14.0" prefHeight="17.0" prefWidth="138.0" text="Search a Book" />
       <Button fx:id="SearchBookButton" layoutX="852.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="54.0" />
-      <ImageView fitHeight="31.0" fitWidth="36.0" layoutX="866.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="filter" fitHeight="31.0" fitWidth="36.0" layoutX="866.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@loupe.png" />
          </image>
@@ -49,20 +29,8 @@
             <Image url="@return.png" />
          </image>
       </ImageView>
-<<<<<<< HEAD
-      <TextField fx:id="SearchBookTextField" layoutX="175.0" layoutY="10.0" prefHeight="25.0" prefWidth="664.0" promptText="Search..." />
+      <TextField fx:id="filterField" layoutX="175.0" layoutY="10.0" prefHeight="25.0" prefWidth="664.0" promptText="Search..." />
       <Label layoutX="105.0" layoutY="46.0" text="Filter" />
       <ChoiceBox fx:id="FilterBookChoiceBox" layoutX="175.0" layoutY="42.0" prefWidth="150.0" />
-=======
-<<<<<<< HEAD
-      <TextField fx:id="SearchBookTextField" layoutX="175.0" layoutY="10.0" prefHeight="25.0" prefWidth="664.0" promptText="Search..." />
-      <Label layoutX="105.0" layoutY="46.0" text="Filter" />
-      <ChoiceBox fx:id="FilterBookChoiceBox" layoutX="175.0" layoutY="42.0" prefWidth="150.0" />
-=======
-      <TextField layoutX="175.0" layoutY="10.0" prefHeight="25.0" prefWidth="664.0" promptText="Search..." />
-      <Label layoutX="105.0" layoutY="46.0" text="Filter" />
-      <ChoiceBox layoutX="175.0" layoutY="42.0" prefWidth="150.0" />
->>>>>>> 28382d25c60e17d41f6d9e9781b854ca435ee395
->>>>>>> parent of e0be974 (test)
    </children>
 </Pane>

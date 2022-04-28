@@ -18,7 +18,7 @@
       </TableView>
       <Label layoutX="92.0" layoutY="14.0" prefHeight="17.0" prefWidth="138.0" text="Search a Book" />
       <Button fx:id="SearchBookButton" layoutX="852.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="54.0" />
-      <ImageView fitHeight="31.0" fitWidth="36.0" layoutX="866.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="filter" fitHeight="31.0" fitWidth="36.0" layoutX="866.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@loupe.png" />
          </image>

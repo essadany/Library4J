@@ -19,12 +19,12 @@ import java.sql.SQLException;
 
 public class user {
     //attributs
-    private static String role;
-    private  static String password;
-    private static String adress;
-    private static String first_name;
-    private static String last_name;
-    private static int userID;
+    private  String role;
+    private   String password;
+    private  String adress;
+    private  String first_name;
+    private  String last_name;
+    private  int userID;
     //constroctor
     public user(String role, String password, String adress, String first_name, String last_name, int userID) {
         this.role = role;
@@ -136,14 +136,34 @@ public class user {
 
 
     }
+    //userProfile
+    public void userProfile(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/userProfile.fxml"));
+        Parent root = (Parent) loader.load();
+        userProfile controller = loader.getController();
+        controller.SetUserProfile(getUserID(),getFirst_name(),getLast_name(),getAdress());
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
     //method search to show new Scene to search a book
-    public void search(MouseEvent event) throws IOException {
+    public void searchBook(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/searchBook.fxml"));
         Parent root = (Parent) loader.load();
         stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+    public void disconnect(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/user.fxml"));
+        Parent root = (Parent) loader.load();
+        stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
     }
 
 }
