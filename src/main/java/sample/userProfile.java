@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class userProfile {
@@ -57,15 +58,12 @@ public class userProfile {
         scene.setScene(event,path);
     }
 
-    public void SetUserProfile(String a) throws SQLException {
-        String sql  = "select * from users";
-        Connect con = new Connect();
-        PreparedStatement stat = con.connection().prepareStatement(sql);
-        //userID.setText(String.valueOf(u));
-        adress.setText(a);
-        /*first_name.setText(f);
+    public void setUserInf(int id,String f,String l,String a, String r) {
+        userID.setText(String.valueOf(id));
+        first_name.setText(f);
         last_name.setText(l);
-        adress.setText(a);*/
+        adress.setText(a);
+        role.setText(r);
     }
 
 }

@@ -6,11 +6,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.librarian">
    <center>
       <HBox prefHeight="299.0" prefWidth="1000.0" spacing="50.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="userProfileButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#userProfile" onMouseEntered="#userProfile" prefHeight="202.0" prefWidth="270.0" text="User">
+            <Button fx:id="userProfileButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#userProfile"  prefHeight="202.0" prefWidth="270.0" text="User">
                <graphic>
                   <ImageView fitHeight="151.0" fitWidth="152.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -89,7 +89,7 @@
                   <Font name="Garamond" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="userID" prefHeight="78.0" prefWidth="154.0">
+            <Label fx:id="userID" prefHeight="78.0" prefWidth="154.0" text="label">
                <font>
                   <Font name="Garamond" size="24.0" />
                </font>

@@ -110,23 +110,27 @@ public class user {
         //if the informations of user are corrects
         if (rs.next()) {
             String path;
-
+            Parent root;
+            Stage stage;
             //Show user interface
-            if (getRole().equals("student")){
+            if (rs.getString("role").equals("student")){
                 path="/student.fxml";
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
-                Parent root = loader.load();
+                root = loader.load();
                 student controller = loader.getController();
-                controller.setUserProfile(rs.getInt(0));
+                controller.setUserProfile(rs.getInt(1));
 
             } else {
                 path="/librarian.fxml";
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
-                Parent root = loader.load();
+                root = loader.load();
                 librarian controller = loader.getController();
-                controller.setUserProfile(rs.getInt(0));
+                controller.setUserProfile(rs.getInt("userID"));
             }
-            scene.setScene(event,path);
+            Scene scene = new Scene(root,1000,700);
+            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(scene);
+
         }else {
             isConnected.setText("adress or password wrong, please try again");
         }

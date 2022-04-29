@@ -12,6 +12,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class librarian extends user{
@@ -19,6 +21,7 @@ public class librarian extends user{
         super();
     }
     user user = new user();
+    setScene scene = new setScene();
     @FXML
     private Button borrowingLibButton;
 
@@ -64,7 +67,21 @@ public class librarian extends user{
 
     @FXML
     public void userProfile(ActionEvent event) throws IOException, SQLException {
-        scene.setScene(event,"/userProfile.fxml");
+        String sql  = "select * from users where userID = ?";
+        Connect con = new Connect();
+        PreparedStatement stat = con.connection().prepareStatement(sql);
+        stat.setString(1, userID.getText());
+        ResultSet rs = stat.executeQuery();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/userProfile.fxml"));
+        Parent root = (Parent) loader.load();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        userProfile controller = loader.getController();
+        while (rs.next()){
+            controller.setUserInf(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(6));
+        }
+        Scene scene = new Scene(root,1000,700);
+        stage.setScene(scene);
+        stage.show();
 
     }
 
