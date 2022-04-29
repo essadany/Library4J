@@ -13,7 +13,6 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
 <TabPane fx:id="loansPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
   <tabs>
@@ -29,33 +28,59 @@
                   <AnchorPane layoutX="88.0" layoutY="136.0" prefHeight="403.0" prefWidth="334.0" style="-fx-background-color: #CCCCCC;">
                      <children>
                         <Label layoutX="14.0" layoutY="45.0" text="Book id" />
-                        <Label layoutX="16.0" layoutY="121.0" text="Title" />
-                        <Label layoutX="16.0" layoutY="168.0" text="Author" />
-                        <Label layoutX="13.0" layoutY="214.0" text="Language" />
+                        <Label fx:id="issue1Author" layoutX="93.0" layoutY="167.0" prefHeight="34.0" prefWidth="140.0" text="Author">
+                           <font>
+                              <Font name="Garamond" size="20.0" />
+                           </font></Label>
                         <TextField fx:id="issue1BookId" layoutX="102.0" layoutY="41.0" prefWidth="150.0" />
-                        <TextField fx:id="issue1Title" layoutX="102.0" layoutY="117.0" prefHeight="26.0" prefWidth="200.0" />
-                        <TextField fx:id="issue1Author" layoutX="102.0" layoutY="164.0" prefWidth="200.0" />
-                        <TextField fx:id="issue1Language" layoutX="102.0" layoutY="210.0" prefWidth="150.0" />
                         <Button fx:id="issue1SearchBookButton" layoutX="262.0" layoutY="41.0" mnemonicParsing="false" text="Search" />
-                        <Label layoutX="15.0" layoutY="328.0" text="Available" />
-                        <Text fx:id="issue1Availability" layoutX="100.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Availability" wrappingWidth="133.3367156982422" />
-                        <Label layoutX="13.0" layoutY="278.0" text="Date of edition" />
-                        <DatePicker fx:id="issue1DateOfEdition" layoutX="102.0" layoutY="274.0" prefHeight="26.0" prefWidth="150.0" />
+                        <Label fx:id="issue1Title" layoutX="93.0" layoutY="113.0" prefHeight="34.0" prefWidth="140.0" text="Title">
+                           <font>
+                              <Font name="Garamond" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="issue1Language" layoutX="93.0" layoutY="224.0" prefHeight="34.0" prefWidth="140.0" text="Language">
+                           <font>
+                              <Font name="Garamond" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="issue1DoE" layoutX="93.0" layoutY="287.0" prefHeight="34.0" prefWidth="140.0" text="Date of Edition">
+                           <font>
+                              <Font name="Garamond" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="issue1Availability" layoutX="93.0" layoutY="346.0" prefHeight="34.0" prefWidth="140.0" text="Availability">
+                           <font>
+                              <Font name="Garamond" size="20.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                   <AnchorPane layoutX="480.0" layoutY="136.0" prefHeight="403.0" prefWidth="334.0" style="-fx-background-color: #CCCCCC;">
                      <children>
                         <Label layoutX="14.0" layoutY="45.0" text="Student id" />
-                        <Label layoutX="13.0" layoutY="121.0" text="First Name" />
-                        <Label layoutX="12.0" layoutY="168.0" text="Last Name " />
-                        <Label layoutX="14.0" layoutY="214.0" text="Adress" />
                         <TextField fx:id="issue1Studentid" layoutX="92.0" layoutY="41.0" />
-                        <TextField fx:id="issue1FirstName" layoutX="92.0" layoutY="117.0" />
-                        <TextField fx:id="issue1LastName" layoutX="92.0" layoutY="164.0" />
-                        <TextField fx:id="issue1Adress" layoutX="92.0" layoutY="210.0" prefWidth="200.0" />
                         <Button fx:id="issue1SearchStudentButton" layoutX="258.0" layoutY="41.0" mnemonicParsing="false" text="Search" />
-                        <Label layoutX="14.0" layoutY="264.0" text="Role" />
-                        <TextField fx:id="issue1Role" layoutX="92.0" layoutY="260.0" />
+                        <Label fx:id="issue1FirstName" layoutX="97.0" layoutY="112.0" prefHeight="34.0" prefWidth="140.0" text="First Name">
+                           <font>
+                              <Font name="Garamond" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="issue1LastName" layoutX="97.0" layoutY="168.0" prefHeight="34.0" prefWidth="140.0" text="Last Name">
+                           <font>
+                              <Font name="Garamond" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="issue1Adress" layoutX="97.0" layoutY="223.0" prefHeight="34.0" prefWidth="140.0" text="Adress">
+                           <font>
+                              <Font name="Garamond" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="issue1Role" layoutX="97.0" layoutY="282.0" prefHeight="34.0" prefWidth="140.0" text="Role">
+                           <font>
+                              <Font name="Garamond" size="20.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                   <Label layoutX="500.0" layoutY="78.0" prefHeight="18.0" prefWidth="181.0" text="Student details">
@@ -82,28 +107,55 @@
                   <AnchorPane layoutX="102.0" layoutY="130.0" prefHeight="412.0" prefWidth="795.0" style="-fx-background-color: #CCCCCC;">
                      <children>
                         <Label layoutX="45.0" layoutY="36.0" text="Student ID" />
-                        <Label layoutX="45.0" layoutY="111.0" text="First name" />
-                        <Label layoutX="45.0" layoutY="176.0" text="Last name" />
-                        <Label layoutX="45.0" layoutY="236.0" text="Adress" />
-                        <Label layoutX="45.0" layoutY="300.0" text="Role" />
                         <TextField fx:id="return1Studentid" layoutX="137.0" layoutY="32.0" />
-                        <TextField fx:id="return1FirstName" layoutX="137.0" layoutY="107.0" />
-                        <TextField fx:id="return1LastName" layoutX="138.0" layoutY="172.0" />
-                        <TextField fx:id="return1Adress" layoutX="139.0" layoutY="232.0" />
-                        <TextField fx:id="return1Role" layoutX="138.0" layoutY="296.0" />
                         <Button fx:id="return1SearchButton" layoutX="333.0" layoutY="32.0" mnemonicParsing="false" text="Search" />
                         <Label layoutX="456.0" layoutY="36.0" text="Book ID" />
-                        <Label layoutX="456.0" layoutY="111.0" text="Title" />
-                        <Label layoutX="456.0" layoutY="176.0" text="Author" />
-                        <Label layoutX="458.0" layoutY="236.0" text="Language" />
-                        <Label layoutX="458.0" layoutY="300.0" text="Date of edition" />
-                        <Label layoutX="458.0" layoutY="358.0" text="Date of Issue" />
                         <TextField fx:id="return1Bookid" layoutX="591.0" layoutY="32.0" />
-                        <TextField fx:id="return1Title" layoutX="591.0" layoutY="107.0" />
-                        <TextField fx:id="return1Author" layoutX="591.0" layoutY="172.0" />
-                        <TextField fx:id="return1Language" layoutX="591.0" layoutY="232.0" />
-                        <DatePicker fx:id="return1DateOfEdition" layoutX="591.0" layoutY="296.0" />
-                        <DatePicker fx:id="return1DateOfIssue" layoutX="592.0" layoutY="354.0" />
+                        <Label fx:id="return1FirstName" layoutX="142.0" layoutY="115.0" prefHeight="34.0" prefWidth="140.0" text="First Name">
+                           <font>
+                              <Font name="Garamond" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="return1LastName" layoutX="142.0" layoutY="184.0" prefHeight="34.0" prefWidth="140.0" text="Last Name">
+                           <font>
+                              <Font name="Garamond" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="return1Adress" layoutX="142.0" layoutY="257.0" prefHeight="34.0" prefWidth="140.0" text="Adress">
+                           <font>
+                              <Font name="Garamond" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="return1Role" layoutX="142.0" layoutY="323.0" prefHeight="34.0" prefWidth="140.0" text="Role">
+                           <font>
+                              <Font name="Garamond" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="return1Title" layoutX="548.0" layoutY="106.0" prefHeight="34.0" prefWidth="140.0" text="Title">
+                           <font>
+                              <Font name="Garamond" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="return1Author" layoutX="547.0" layoutY="167.0" prefHeight="34.0" prefWidth="140.0" text="Author">
+                           <font>
+                              <Font name="Garamond" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="return1Language" layoutX="547.0" layoutY="219.0" prefHeight="34.0" prefWidth="140.0" text="Language">
+                           <font>
+                              <Font name="Garamond" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="return1DoE" layoutX="547.0" layoutY="274.0" prefHeight="34.0" prefWidth="140.0" text="Date of Edition">
+                           <font>
+                              <Font name="Garamond" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="return1DoI" layoutX="547.0" layoutY="323.0" prefHeight="34.0" prefWidth="140.0" text="Date of Issue">
+                           <font>
+                              <Font name="Garamond" size="20.0" />
+                           </font>
+                        </Label>
                      </children>
                   </AnchorPane>
                   <Label layoutX="102.0" layoutY="58.0" text="Return Panel">

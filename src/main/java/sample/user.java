@@ -110,16 +110,27 @@ public class user {
         //if the informations of user are corrects
         if (rs.next()) {
             String path;
+
             //Show user interface
             if (getRole().equals("student")){
                 path="/student.fxml";
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+                Parent root = loader.load();
+                student controller = loader.getController();
+                controller.setUserProfile(rs.getInt(0));
+
             } else {
                 path="/librarian.fxml";
+                FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+                Parent root = loader.load();
+                librarian controller = loader.getController();
+                controller.setUserProfile(rs.getInt(0));
             }
             scene.setScene(event,path);
         }else {
             isConnected.setText("adress or password wrong, please try again");
         }
+
 
 
 

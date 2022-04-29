@@ -30,6 +30,8 @@ public class student extends user {
 
     @FXML
     private Button userProfile;
+    @FXML
+    private Label userID;
     //setScene instance :
     setScene scene = new setScene();
 
@@ -58,4 +60,7 @@ public class student extends user {
     }
 
 
+    public void setUserProfile(int id) {
+        userID.setText(String.valueOf(id));
+    }
 }
