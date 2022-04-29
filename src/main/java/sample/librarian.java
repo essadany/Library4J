@@ -55,7 +55,7 @@ public class librarian extends user{
 
     @FXML
     public void manageUser(ActionEvent event) throws IOException {
-        scene.setScene(event,"/manageUsers.fxml");
+        scene.setScene(event,"/manageLoans.fxml");
 
     }
 
