@@ -181,18 +181,17 @@
                <children>
                   <TableView fx:id="issue2SearchTableView" layoutX="20.0" layoutY="83.0" prefHeight="568.0" prefWidth="958.0">
                      <columns>
-                        <TableColumn fx:id="IdBookCol" prefWidth="75.0" text="Book ID" />
-                        <TableColumn fx:id="titile" prefWidth="150.0" text="Title" />
-                        <TableColumn fx:id="author" prefWidth="150.0" text="Author" />
-                        <TableColumn fx:id="date" prefWidth="100.0" text="Edition date" />
-                        <TableColumn fx:id="language" prefWidth="100.0" text="Language" />
-                        <TableColumn fx:id="id" prefWidth="75.0" text="Student ID" />
-                        <TableColumn prefWidth="75.0" text="First name" />
-                        <TableColumn prefWidth="75.0" text="Last name" />
-                        <TableColumn prefWidth="125.0" text="Adress" />
-                        <TableColumn prefWidth="75.0" text="Role" />
-                        <TableColumn prefWidth="75.0" text="Issue date" />
-                        <TableColumn prefWidth="75.0" text="Limit date" />
+                        <TableColumn fx:id="bookid" prefWidth="50.0" text="Book ID" />
+                        <TableColumn fx:id="title" prefWidth="125.0" text="Title" />
+                        <TableColumn fx:id="author" prefWidth="125.0" text="Author" />
+                        <TableColumn fx:id="editiondate" prefWidth="100.0" text="Edition date" />
+                        <TableColumn fx:id="studentid" prefWidth="75.0" text="Student ID" />
+                        <TableColumn fx:id="firstname" prefWidth="75.0" text="First name" />
+                        <TableColumn fx:id="lastname" prefWidth="75.0" text="Last name" />
+                        <TableColumn fx:id="role" prefWidth="75.0" text="Role" />
+                        <TableColumn fx:id="availability" prefWidth="75.0" text="Availability" />
+                        <TableColumn fx:id="issuedate" prefWidth="75.0" text="Issue date" />
+                        <TableColumn fx:id="limitdate" prefWidth="105.60007324218748" text="Limit date" />
                      </columns>
                   </TableView>
                   <Button fx:id="issue2SearchButton" layoutX="891.0" layoutY="30.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="54.0" />
@@ -210,44 +209,6 @@
                   <TextField fx:id="issue2SearchBar" layoutX="123.0" layoutY="30.0" prefHeight="26.0" prefWidth="622.0" promptText="Search an issued book..." />
                   <Label layoutX="762.0" layoutY="34.0" text="Filter" />
                   <ChoiceBox fx:id="issue2FilterChoiceBox" layoutX="805.0" layoutY="30.0" prefHeight="26.0" prefWidth="64.0" />
-               </children></AnchorPane>
-        </content>
-      </Tab>
-      <Tab fx:id="return2Tab" text="Return table">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-               <children>
-                  <TableView fx:id="return2TableView" layoutX="20.0" layoutY="83.0" prefHeight="568.0" prefWidth="958.0">
-                     <columns>
-                        <TableColumn fx:id="IdBookCol1" prefWidth="75.0" text="Book ID" />
-                        <TableColumn fx:id="titile1" prefWidth="150.0" text="Title" />
-                        <TableColumn fx:id="author1" prefWidth="150.0" text="Author" />
-                        <TableColumn fx:id="date1" prefWidth="100.0" text="Edition date" />
-                        <TableColumn fx:id="language1" prefWidth="100.0" text="Language" />
-                        <TableColumn fx:id="id1" prefWidth="75.0" text="Student ID" />
-                        <TableColumn prefWidth="75.0" text="First name" />
-                        <TableColumn prefWidth="75.0" text="Last name" />
-                        <TableColumn prefWidth="125.0" text="Adress" />
-                        <TableColumn prefWidth="75.0" text="Role" />
-                        <TableColumn prefWidth="75.0" text="Issue date" />
-                        <TableColumn prefWidth="75.0" text="Return date" />
-                     </columns>
-                  </TableView>
-                  <Button fx:id="return2SearchButton" layoutX="891.0" layoutY="30.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="54.0" />
-                  <ImageView fitHeight="31.0" fitWidth="36.0" layoutX="905.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@loupe.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="return2returnButton" layoutX="13.0" layoutY="9.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="54.0" />
-                  <ImageView fitHeight="25.0" fitWidth="38.0" layoutX="27.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@return.png" />
-                     </image>
-                  </ImageView>
-                  <TextField fx:id="return2SearchBar" layoutX="123.0" layoutY="30.0" prefHeight="26.0" prefWidth="622.0" promptText="Search a returned book..." />
-                  <Label layoutX="761.0" layoutY="34.0" text="Filter" />
-                  <ChoiceBox fx:id="return2FilterChoiceBox" layoutX="806.0" layoutY="30.0" prefHeight="26.0" prefWidth="64.0" />
                </children></AnchorPane>
         </content>
       </Tab>
