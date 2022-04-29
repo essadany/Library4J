@@ -5,6 +5,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -56,40 +57,40 @@
             </VBox>
          </center>
          <bottom>
-            <Button fx:id="disconnectButtonProfile" onAction="#disconnect" contentDisplay="TOP" mnemonicParsing="false" prefHeight="146.0" prefWidth="173.0" text="Disconnect" BorderPane.alignment="CENTER">
-               <font>
-                  <Font name="Garamond" size="24.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="96.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@off.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
+            <HBox prefHeight="100.0" prefWidth="200.0" spacing="650.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button fx:id="disconnectButtonProfile" contentDisplay="TOP" mnemonicParsing="false" onAction="#disconnect" prefHeight="146.0" prefWidth="173.0" text="Disconnect">
+                     <font>
+                        <Font name="Garamond" size="24.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="96.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@off.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="backButtonProfile" contentDisplay="TOP" mnemonicParsing="false" onAction="#profileBack" prefHeight="146.0" prefWidth="173.0" text="Back">
+                     <font>
+                        <Font name="Garamond" size="24.0" />
+                     </font>
+                     <graphic>
+                        <ImageView fitHeight="96.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@back.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children>
                <BorderPane.margin>
-                  <Insets bottom="15.0" right="800.0" />
+                  <Insets />
                </BorderPane.margin>
-            </Button>
-         </bottom>
-      </BorderPane>
-      <BorderPane  prefHeight="200.0" prefWidth="200.0">
-         <bottom>
-            <Button fx:id="backButtonProfile" contentDisplay="TOP" mnemonicParsing="false" onAction="#profileBack" prefHeight="146.0" prefWidth="173.0" text="Back" BorderPane.alignment="CENTER">
-               <font>
-                  <Font name="Garamond" size="24.0" />
-               </font>
-               <graphic>
-                  <ImageView fitHeight="96.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@back.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-               <BorderPane.margin>
-                  <Insets bottom="15.0" left="800.0" right="5.0" />
-               </BorderPane.margin>
-            </Button>
+               <padding>
+                  <Insets bottom="15.0" left="5.0" right="5.0" />
+               </padding>
+            </HBox>
          </bottom>
       </BorderPane>
    </children>
