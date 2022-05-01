@@ -15,4 +15,10 @@ public class manageUsersController {
     public void disconnect(ActionEvent event) throws IOException {
         scene.disconnect(event);
     }
+
+    public void refreshTable(ActionEvent event) {
+    }
+
+    public void getAddView(ActionEvent event) {
+    }
 }

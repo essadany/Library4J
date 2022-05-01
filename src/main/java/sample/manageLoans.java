@@ -4,7 +4,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.StringReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -182,7 +192,40 @@ public class manageLoans {
     private TextField userID;
     Connect con = new Connect();
     @FXML
-    void searchBook(ActionEvent event) {
+    public void searchBook(ActionEvent event) {
+        try {
+            String url = "https://gallica.bnf.fr/services/OAIRecord?ark="+bookID.getText();
+            System.out.println(url);
+            URL obj = new URL(url);
+            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+            int responseCode = con.getResponseCode();
+            System.out.println("Response Code : " + responseCode);
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+            //print in String
+            // System.out.println(response.toString());
+            Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder()
+                    .parse(new InputSource(new StringReader(response.toString())));
+            NodeList errNodes = doc.getElementsByTagName("oai_dc:dc");
+            int i = 0;
+            Element err = (Element) errNodes.item(0);
+            issue1Author.setText(err.getElementsByTagName("dc:publisher").item(0).getTextContent());
+            issue1Title.setText(err.getElementsByTagName("dc:title").item(0).getTextContent());
+            issue1DoE.setText(err.getElementsByTagName("dc:date").item(0).getTextContent());
+            issue1Language.setText(err.getElementsByTagName("dc:language").item(0).getTextContent());
+            // success
+
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("There is no any book with this ID");
+            alert.showAndWait();
+        }
 
     }
 
