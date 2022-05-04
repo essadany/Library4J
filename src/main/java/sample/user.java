@@ -97,9 +97,10 @@ public class user {
     PasswordField inputPwd;
     @FXML
     Label isConnected;
-    Connect con = new Connect();
+
     setScene scene= new setScene();
     public void authentificate(ActionEvent event) throws IOException, SQLException {
+        Connect con = new Connect();
         String sql = "select * from users where adress = ? and password = ? ";
         PreparedStatement stat = con.connection().prepareStatement(sql);
         String adressEntred = inputAdress.getText();

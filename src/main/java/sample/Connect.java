@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.scene.control.Alert;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 
@@ -12,7 +14,9 @@ public class Connect {
             System.out.println("connected!!");
         }
         catch(Exception e){
-            System.out.println("connected not yet!!");
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("Please connect to database server !");
+            alert.showAndWait();
 
         }
 

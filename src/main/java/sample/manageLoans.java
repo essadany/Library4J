@@ -4,10 +4,24 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
 
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.StringReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
 
 public class manageLoans {
     @FXML
@@ -180,25 +194,81 @@ public class manageLoans {
 
     @FXML
     private TextField userID;
-    Connect con = new Connect();
+
     @FXML
-    void searchBook(ActionEvent event) {
+    public void searchBook(ActionEvent event) {
+        try {
+            String url = "https://gallica.bnf.fr/services/OAIRecord?ark="+bookID.getText();
+            System.out.println(url);
+            URL obj = new URL(url);
+            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+            int responseCode = con.getResponseCode();
+            System.out.println("Response Code : " + responseCode);
+            BufferedReader in = new BufferedReader(
+                    new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuffer response = new StringBuffer();
+            while ((inputLine = in.readLine()) != null) {
+                response.append(inputLine);
+            }
+            in.close();
+            //print in String
+            // System.out.println(response.toString());
+            Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder()
+                    .parse(new InputSource(new StringReader(response.toString())));
+            NodeList errNodes = doc.getElementsByTagName("oai_dc:dc");
+            int i = 0;
+            Element err = (Element) errNodes.item(0);
+            issue1Author.setText(err.getElementsByTagName("dc:publisher").item(0).getTextContent());
+            issue1Title.setText(err.getElementsByTagName("dc:title").item(0).getTextContent());
+            issue1DoE.setText(err.getElementsByTagName("dc:date").item(0).getTextContent());
+            issue1Language.setText(err.getElementsByTagName("dc:language").item(1).getTextContent());
+            // success
+
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("There is no any book with this ID");
+            alert.showAndWait();
+        }
 
     }
 
     @FXML
     void searchStudent(ActionEvent event) throws SQLException {
+        Connect con = new Connect();
         String sql = "select * from users where userID = ? ";
         PreparedStatement stat = con.connection().prepareStatement(sql);
         stat.setString(1, userID.getText());
         ResultSet rs = stat.executeQuery();
-        while (rs.next()) {
+        if (rs.next()) {
             issue1FirstName.setText(rs.getString(2));
             issue1LastName.setText(rs.getString(3));
             issue1Adress.setText(rs.getString(4));
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("There is no any student with this ID");
+            alert.showAndWait();
         }
+
 
 
     }
 
+    public void borrow(ActionEvent event) throws SQLException {
+        Connect con = new Connect();
+        PreparedStatement stat = con.connection().prepareStatement("insert into loans values  (1,?,?,?,NULL)");
+        stat.setString(1,userID.getText());
+        stat.setString(2,bookID.getText());
+        stat.setString(3, String.valueOf(issue1DateIssue.getValue()));
+        DateFormat date_return = new SimpleDateFormat();
+        /*LocalDate cal = issue1DateIssue.getValue();
+        date_return.format(cal);
+        cal.add(Calendar.DATE, 30);
+        stat.setString(4, String.valueOf(issue1DateIssue.getValue()));*/
+        stat.execute();
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("Loan added succefuly !");
+        alert.showAndWait();
+
+    }
 }

@@ -49,13 +49,13 @@ public class librarian extends user{
 
     @FXML
     public void getBorrowInf(ActionEvent event) throws IOException {
-        scene.setScene(event,"/manageLonas.fxml");
+        scene.setScene(event,"/manageLoans.fxml");
 
     }
 
     @FXML
     public void manageUser(ActionEvent event) throws IOException {
-        scene.setScene(event,"/manageLoans.fxml");
+        scene.setScene(event,"/manageUsers.fxml");
 
     }
 

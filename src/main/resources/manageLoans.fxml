@@ -69,7 +69,7 @@
                         <Font name="System Bold" size="23.0" />
                      </font>
                   </Label>
-                  <Button fx:id="issue1issueButton" layoutX="375.0" layoutY="594.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="158.0" text="Issue" />
+                  <Button fx:id="issue1issueButton" layoutX="375.0" layoutY="594.0" mnemonicParsing="false" onAction="#borrow" prefHeight="26.0" prefWidth="158.0" text="Issue" />
                   <DatePicker fx:id="issue1DateIssue" layoutX="373.0" layoutY="556.0" prefHeight="26.0" prefWidth="160.0" />
                   <Label layoutX="284.0" layoutY="561.0" text="Date of Issue" />
                   <Button fx:id="ReturnButton2" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="54.0" />
@@ -103,11 +103,6 @@
                            </font>
                         </Label>
                         <Label fx:id="return1Adress" layoutX="142.0" layoutY="257.0" prefHeight="34.0" prefWidth="140.0" text="Adress">
-                           <font>
-                              <Font name="Garamond" size="20.0" />
-                           </font>
-                        </Label>
-                        <Label fx:id="return1Role" layoutX="142.0" layoutY="323.0" prefHeight="34.0" prefWidth="140.0" text="Role">
                            <font>
                               <Font name="Garamond" size="20.0" />
                            </font>
