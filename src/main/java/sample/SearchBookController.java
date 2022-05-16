@@ -64,8 +64,7 @@ public class SearchBookController implements Initializable {
 
     @FXML
     private TableColumn<book, String> title;
-
-
+    @FXML
     public ObservableList<book> data = FXCollections.observableArrayList();
 
     @FXML
@@ -80,7 +79,7 @@ public class SearchBookController implements Initializable {
             case "title":
                 result = "dc.title";
                 break;
-            case "edition_date":
+            case "edition date":
                 result = "dc.date";
                 break;
             case "language":
@@ -92,7 +91,6 @@ public class SearchBookController implements Initializable {
 
 
         }
-        String creator = "Victor%20Hugo";
         try {
             String url = "https://gallica.bnf.fr/SRU?operation=searchRetrieve&version=1.2&query=(" + result + "%20all%20" + input + ")%20and%20(dc.type%20all%20%22monographie%22)";
             System.out.println(url);
@@ -114,18 +112,16 @@ public class SearchBookController implements Initializable {
                     .parse(new InputSource(new StringReader(response.toString())));
             NodeList errNodes = doc.getElementsByTagName("oai_dc:dc");
             int i = 0;
-            String j = "sfjkd5645";
             while (errNodes.getLength() > 0) {
                 Element err = (Element) errNodes.item(i);
-                //book book = new book(j,err.getElementsByTagName("dc:title").item(0).getTextContent(),err.getElementsByTagName("dc:author").item(0).getTextContent(),err.getElementsByTagName("dc:date").item(0).getTextContent(),err.getElementsByTagName("dc:language").item(0).getTextContent(),"available");
-                data.add(new book(j, err.getElementsByTagName("dc:title").item(0).getTextContent(), err.getElementsByTagName("dc:author").item(0).getTextContent(), err.getElementsByTagName("dc:date").item(0).getTextContent(), err.getElementsByTagName("dc:language").item(0).getTextContent(), "available"));
                 i++;
-
-
+                book book = new book("dfjkds",err.getElementsByTagName("dc:title").item(0).getTextContent(),err.getElementsByTagName("dc:author").item(0).getTextContent(),err.getElementsByTagName("dc:date").item(0).getTextContent(),err.getElementsByTagName("dc:language").item(0).getTextContent(),"available");
+                data.add(book);
                 System.out.println("author : "+err.getElementsByTagName("dc:creator").item(0).getTextContent());
                 System.out.println("title : "+err.getElementsByTagName("dc:title").item(0).getTextContent());
                 System.out.println("date : "+err.getElementsByTagName("dc:date").item(0).getTextContent());
                 System.out.println("language : "+err.getElementsByTagName("dc:language").item(1).getTextContent());
+
             }
             // success
 

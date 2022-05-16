@@ -164,7 +164,6 @@
                         <TableColumn fx:id="studentid" prefWidth="75.0" text="Student ID" />
                         <TableColumn fx:id="firstname" prefWidth="75.0" text="First name" />
                         <TableColumn fx:id="lastname" prefWidth="75.0" text="Last name" />
-                        <TableColumn fx:id="role" prefWidth="75.0" text="Role" />
                         <TableColumn fx:id="availability" prefWidth="75.0" text="Availability" />
                         <TableColumn fx:id="issuedate" prefWidth="75.0" text="Issue date" />
                         <TableColumn fx:id="limitdate" prefWidth="105.60007324218748" text="Limit date" />
@@ -183,8 +182,6 @@
                      </image>
                   </ImageView>
                   <TextField fx:id="issue2SearchBar" layoutX="123.0" layoutY="30.0" prefHeight="26.0" prefWidth="622.0" promptText="Search an issued book..." />
-                  <Label layoutX="762.0" layoutY="34.0" text="Filter" />
-                  <ChoiceBox fx:id="issue2FilterChoiceBox" layoutX="805.0" layoutY="30.0" prefHeight="26.0" prefWidth="64.0" />
                </children></AnchorPane>
         </content>
       </Tab>
