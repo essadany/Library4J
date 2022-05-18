@@ -74,10 +74,10 @@ public class SearchBookController implements Initializable {
     @FXML
     public void filter(ActionEvent event) throws SQLException {
         Connect conn = new Connect();
-        choiceBook.getSelectionModel().selectFirst();
+
         String choice = choiceBook.getSelectionModel().getSelectedItem().toString();
         String input = filterField.getText();
-        String result = "dc.tiltle";
+        String result="";
         switch (choice) {
             case "author":
                 result = "dc.creator";
@@ -92,7 +92,7 @@ public class SearchBookController implements Initializable {
                 result = "dc.language";
                 break;
             default:
-                result = "dc.creator";
+                System.out.println("hjds");
                 break;
         }
         try {

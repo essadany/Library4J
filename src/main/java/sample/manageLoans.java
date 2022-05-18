@@ -20,11 +20,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.StringReader;
+import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.sql.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ResourceBundle;
 
 public class manageLoans implements Initializable {
@@ -220,19 +223,27 @@ public class manageLoans implements Initializable {
     @FXML
     void searchStudent(ActionEvent event) throws SQLException {
         Connect con = new Connect();
-        String sql = "select * from users where userID = ? ";
-        PreparedStatement stat = con.connection().prepareStatement(sql);
-        stat.setString(1, userID.getText());
-        ResultSet rs = stat.executeQuery();
-        if (rs.next()) {
-            issue1FirstName.setText(rs.getString(2));
-            issue1LastName.setText(rs.getString(3));
-            issue1Adress.setText(rs.getString(4));
-        } else {
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setContentText("There is no any student with this ID");
+        try{
+            String sql = "select * from users where userID = ? and role='student' ";
+            PreparedStatement stat = con.connection().prepareStatement(sql);
+            stat.setString(1, userID.getText());
+            ResultSet rs = stat.executeQuery();
+            if (rs.next()) {
+                issue1FirstName.setText(rs.getString(2));
+                issue1LastName.setText(rs.getString(3));
+                issue1Adress.setText(rs.getString(4));
+            } else {
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setContentText("There is no any student with this ID");
+                alert.showAndWait();
+            }
+        }catch (Exception E){
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("We don't have acces to database!");
             alert.showAndWait();
+
         }
+
 
 
 
@@ -240,15 +251,14 @@ public class manageLoans implements Initializable {
 
     public void borrow(ActionEvent event) throws SQLException {
         Connect con = new Connect();
-        PreparedStatement stat = con.connection().prepareStatement("insert into loans values  (DEFAULT,?,?,?,NULL)");
+        Statement statement = con.connection().createStatement();
+        ResultSet res = statement.executeQuery("select * from loans");
+        PreparedStatement stat = con.connection().prepareStatement("insert into loans values  (default ,?,?,?,?)");
         stat.setString(1,userID.getText());
         stat.setString(2,bookID.getText());
         stat.setString(3, String.valueOf(issue1DateIssue.getValue()));
-        DateFormat date_return = new SimpleDateFormat();
-        /*LocalDate cal = issue1DateIssue.getValue();
-        date_return.format(cal);
-        cal.add(Calendar.DATE, 30);
-        stat.setString(4, String.valueOf(issue1DateIssue.getValue()));*/
+        LocalDate date_return = issue1DateIssue.getValue().plusDays(25);
+        stat.setString(4, String.valueOf(date_return));
         stat.execute();
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setContentText("Loan added succefuly !");
@@ -353,7 +363,7 @@ public class manageLoans implements Initializable {
     @FXML
     public void returnBook(ActionEvent event) throws SQLException {
         Connect conn = new Connect();
-        PreparedStatement stat = conn.connection().prepareStatement("select * from loans where userID =? and bookID = ? and date_Return=date_Borrow");
+        PreparedStatement stat = conn.connection().prepareStatement("select * from loans where userID =? and bookID = ? and date_Borrow=date_Return ");
         stat.setString(1, return1Studentid.getText());
         stat.setString(2, return1Bookid.getText());
         ResultSet res = stat.executeQuery();
