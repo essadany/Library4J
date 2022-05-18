@@ -363,7 +363,7 @@ public class manageLoans implements Initializable {
     @FXML
     public void returnBook(ActionEvent event) throws SQLException {
         Connect conn = new Connect();
-        PreparedStatement stat = conn.connection().prepareStatement("select * from loans where userID =? and bookID = ? and date_Borrow=date_Return ");
+        PreparedStatement stat = conn.connection().prepareStatement("select * from loans where userID =? and bookID = ? and DATEDIFF(loans.date_Return,loans.date_Borrow)=25 ");
         stat.setString(1, return1Studentid.getText());
         stat.setString(2, return1Bookid.getText());
         ResultSet res = stat.executeQuery();
