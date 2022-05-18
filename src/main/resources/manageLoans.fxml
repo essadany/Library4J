@@ -72,7 +72,7 @@
                   <Button fx:id="issue1issueButton" layoutX="375.0" layoutY="594.0" mnemonicParsing="false" onAction="#borrow" prefHeight="26.0" prefWidth="158.0" text="Issue" />
                   <DatePicker fx:id="issue1DateIssue" layoutX="373.0" layoutY="556.0" prefHeight="26.0" prefWidth="160.0" />
                   <Label layoutX="284.0" layoutY="561.0" text="Date of Issue" />
-                  <Button fx:id="ReturnButton2" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="54.0" />
+                  <Button fx:id="ReturnButton2" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backInterface" prefHeight="31.0" prefWidth="54.0" />
                   <ImageView fx:id="issue1BackButton" fitHeight="25.0" fitWidth="38.0" layoutX="28.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@return.png" />

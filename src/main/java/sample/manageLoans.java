@@ -380,4 +380,9 @@ public class manageLoans implements Initializable {
 
 
     }
+    @FXML
+    public void backInterface(ActionEvent event) throws IOException {
+        setScene scene = new setScene();
+        scene.setScene(event,"/librarian.fxml");
+    }
 }

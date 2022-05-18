@@ -15,6 +15,9 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ResourceBundle;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
@@ -66,9 +69,12 @@ public class SearchBookController implements Initializable {
     private TableColumn<book, String> title;
     @FXML
     public ObservableList<book> data = FXCollections.observableArrayList();
+    String st;
 
     @FXML
-    public void filter(ActionEvent event) {
+    public void filter(ActionEvent event) throws SQLException {
+        Connect conn = new Connect();
+        choiceBook.getSelectionModel().selectFirst();
         String choice = choiceBook.getSelectionModel().getSelectedItem().toString();
         String input = filterField.getText();
         String result = "dc.tiltle";
@@ -86,10 +92,8 @@ public class SearchBookController implements Initializable {
                 result = "dc.language";
                 break;
             default:
-                System.out.println("No choice selected");
+                result = "dc.creator";
                 break;
-
-
         }
         try {
             String url = "https://gallica.bnf.fr/SRU?operation=searchRetrieve&version=1.2&query=(" + result + "%20all%20" + input + ")%20and%20(dc.type%20all%20%22monographie%22)";
@@ -105,22 +109,30 @@ public class SearchBookController implements Initializable {
             while ((inputLine = in.readLine()) != null) {
                 response.append(inputLine);
             }
-            in.close();
+            //in.close();
             //print in String
             // System.out.println(response.toString());
             Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder()
                     .parse(new InputSource(new StringReader(response.toString())));
-            NodeList errNodes = doc.getElementsByTagName("oai_dc:dc");
+            NodeList errNodes = doc.getElementsByTagName("srw:record");
             int i = 0;
             while (errNodes.getLength() > 0) {
                 Element err = (Element) errNodes.item(i);
                 i++;
-                book book = new book("dfjkds",err.getElementsByTagName("dc:title").item(0).getTextContent(),err.getElementsByTagName("dc:author").item(0).getTextContent(),err.getElementsByTagName("dc:date").item(0).getTextContent(),err.getElementsByTagName("dc:language").item(0).getTextContent(),"available");
+                PreparedStatement stat = conn.connection().prepareStatement("select * from loans where bookID=? and date_Return=date_Borrow");
+                stat.setString(1,err.getElementsByTagName("uri").item(0).getTextContent());
+                ResultSet res = stat.executeQuery();
+                if (res.next()){
+                    st = "available";
+                }else{
+                    st = "not available";
+                }
+                book book = new book(err.getElementsByTagName("uri").item(0).getTextContent(),err.getElementsByTagName("dc:title").item(0).getTextContent(),err.getElementsByTagName("dc:publisher").item(0).getTextContent(),err.getElementsByTagName("dc:date").item(0).getTextContent(),err.getElementsByTagName("dc:language").item(1).getTextContent(),st);
                 data.add(book);
-                System.out.println("author : "+err.getElementsByTagName("dc:creator").item(0).getTextContent());
+                /*System.out.println("author : "+err.getElementsByTagName("dc:creator").item(0).getTextContent());
                 System.out.println("title : "+err.getElementsByTagName("dc:title").item(0).getTextContent());
                 System.out.println("date : "+err.getElementsByTagName("dc:date").item(0).getTextContent());
-                System.out.println("language : "+err.getElementsByTagName("dc:language").item(1).getTextContent());
+                System.out.println("language : "+err.getElementsByTagName("dc:language").item(1).getTextContent());*/
 
             }
             // success
