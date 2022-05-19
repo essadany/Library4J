@@ -73,73 +73,80 @@ public class SearchBookController implements Initializable {
 
     @FXML
     public void filter(ActionEvent event) throws SQLException {
-        Connect conn = new Connect();
-
-        String choice = choiceBook.getSelectionModel().getSelectedItem().toString();
-        String input = filterField.getText();
-        String result="";
-        switch (choice) {
-            case "author":
-                result = "dc.creator";
-                break;
-            case "title":
-                result = "dc.title";
-                break;
-            case "edition date":
-                result = "dc.date";
-                break;
-            case "language":
-                result = "dc.language";
-                break;
-            default:
-                System.out.println("hjds");
-                break;
-        }
         try {
-            String url = "https://gallica.bnf.fr/SRU?operation=searchRetrieve&version=1.2&query=(" + result + "%20all%20" + input + ")%20and%20(dc.type%20all%20%22monographie%22)";
-            System.out.println(url);
-            URL obj = new URL(url);
-            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-            int responseCode = con.getResponseCode();
-            System.out.println("Response Code : " + responseCode);
-            BufferedReader in = new BufferedReader(
-                    new InputStreamReader(con.getInputStream()));
-            String inputLine;
-            StringBuffer response = new StringBuffer();
-            while ((inputLine = in.readLine()) != null) {
-                response.append(inputLine);
+            Connect conn = new Connect();
+
+            String choice = choiceBook.getSelectionModel().getSelectedItem().toString();
+            String input = filterField.getText();
+            String result="";
+            switch (choice) {
+                case "author":
+                    result = "dc.creator";
+                    break;
+                case "title":
+                    result = "dc.title";
+                    break;
+                case "edition date":
+                    result = "dc.date";
+                    break;
+                case "language":
+                    result = "dc.language";
+                    break;
+                default:
+                    result = "dc.author";
+                    break;
             }
-            //in.close();
-            //print in String
-            // System.out.println(response.toString());
-            Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder()
-                    .parse(new InputSource(new StringReader(response.toString())));
-            NodeList errNodes = doc.getElementsByTagName("srw:record");
-            int i = 0;
-            while (errNodes.getLength() > 0) {
-                Element err = (Element) errNodes.item(i);
-                i++;
-                PreparedStatement stat = conn.connection().prepareStatement("select * from loans where bookID=? and date_Return=date_Borrow");
-                stat.setString(1,err.getElementsByTagName("uri").item(0).getTextContent());
-                ResultSet res = stat.executeQuery();
-                if (res.next()){
-                    st = "available";
-                }else{
-                    st = "not available";
+            try {
+                String url = "https://gallica.bnf.fr/SRU?operation=searchRetrieve&version=1.2&query=(" + result + "%20all%20" + input + ")%20and%20(dc.type%20all%20%22monographie%22)";
+                System.out.println(url);
+                URL obj = new URL(url);
+                HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+                int responseCode = con.getResponseCode();
+                System.out.println("Response Code : " + responseCode);
+                BufferedReader in = new BufferedReader(
+                        new InputStreamReader(con.getInputStream()));
+                String inputLine;
+                StringBuffer response = new StringBuffer();
+                while ((inputLine = in.readLine()) != null) {
+                    response.append(inputLine);
                 }
-                book book = new book(err.getElementsByTagName("uri").item(0).getTextContent(),err.getElementsByTagName("dc:title").item(0).getTextContent(),err.getElementsByTagName("dc:publisher").item(0).getTextContent(),err.getElementsByTagName("dc:date").item(0).getTextContent(),err.getElementsByTagName("dc:language").item(1).getTextContent(),st);
-                data.add(book);
+                //in.close();
+                //print in String
+                // System.out.println(response.toString());
+                Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder()
+                        .parse(new InputSource(new StringReader(response.toString())));
+                NodeList errNodes = doc.getElementsByTagName("srw:record");
+                int i = 0;
+                while (errNodes.getLength() > 0) {
+                    Element err = (Element) errNodes.item(i);
+                    i++;
+                    PreparedStatement stat = conn.connection().prepareStatement("select * from loans where bookID=? and DATEDIFF(date_Return,date_Borrow)=25");
+                    stat.setString(1,err.getElementsByTagName("uri").item(0).getTextContent());
+                    ResultSet res = stat.executeQuery();
+                    if (res.next()){
+                        st = "not available";
+                    }else{
+                        st = "available";
+                    }
+                    book book = new book(err.getElementsByTagName("uri").item(0).getTextContent(),err.getElementsByTagName("dc:title").item(0).getTextContent(),err.getElementsByTagName("dc:publisher").item(0).getTextContent(),err.getElementsByTagName("dc:date").item(0).getTextContent(),err.getElementsByTagName("dc:language").item(1).getTextContent(),st);
+                    data.add(book);
                 /*System.out.println("author : "+err.getElementsByTagName("dc:creator").item(0).getTextContent());
                 System.out.println("title : "+err.getElementsByTagName("dc:title").item(0).getTextContent());
                 System.out.println("date : "+err.getElementsByTagName("dc:date").item(0).getTextContent());
                 System.out.println("language : "+err.getElementsByTagName("dc:language").item(1).getTextContent());*/
 
-            }
-            // success
+                }
+                // success
 
-        } catch (Exception e) {
-            System.out.println(e);
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }catch (Exception e){
+            Alert alert= new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("You should select a choice in FilterBox!");
+            alert.showAndWait();
         }
+
 
     }
 

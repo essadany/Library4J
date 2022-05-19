@@ -41,10 +41,6 @@ public class user {
 
     //getters
 
-    public String getRole() {
-        return this.role;
-    }
-
     public String getPassword() {
         return this.password;
     }
@@ -66,9 +62,6 @@ public class user {
     }
     //Setters
 
-    public void setRole(String role) {
-        this.role = role;
-    }
 
     public void setPassword(String password) {
         this.password = password;

@@ -250,19 +250,48 @@ public class manageLoans implements Initializable {
     }
 
     public void borrow(ActionEvent event) throws SQLException {
-        Connect con = new Connect();
-        Statement statement = con.connection().createStatement();
-        ResultSet res = statement.executeQuery("select * from loans");
-        PreparedStatement stat = con.connection().prepareStatement("insert into loans values  (default ,?,?,?,?)");
-        stat.setString(1,userID.getText());
-        stat.setString(2,bookID.getText());
-        stat.setString(3, String.valueOf(issue1DateIssue.getValue()));
-        LocalDate date_return = issue1DateIssue.getValue().plusDays(25);
-        stat.setString(4, String.valueOf(date_return));
-        stat.execute();
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("Loan added succefuly !");
-        alert.showAndWait();
+        try{
+            Connect con = new Connect();
+            PreparedStatement statement1 = con.connection().prepareStatement("select * from loans where bookID = ? and DATEDIFF(loans.date_Return,loans.date_Borrow)=25");
+            statement1.setString(1,bookID.getText());
+            ResultSet res1 = statement1.executeQuery();
+            if (res1.next()){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("This Book is not available!");
+                alert.showAndWait();
+            }else{
+                PreparedStatement statement = con.connection().prepareStatement("select * from loans where userID = ? and DATEDIFF(loans.date_Return,loans.date_Borrow)=25");
+                statement.setString(1,userID.getText());
+                ResultSet res = statement.executeQuery();
+                int i=0;
+                while (res.next()){
+                    i++;
+                }
+                if ( i <= 8){
+                    PreparedStatement stat = con.connection().prepareStatement("insert into loans values  (default ,?,?,?,?)");
+                    stat.setString(1,userID.getText());
+                    stat.setString(2,bookID.getText());
+                    stat.setString(3, String.valueOf(issue1DateIssue.getValue()));
+                    LocalDate date_return = issue1DateIssue.getValue().plusDays(25);
+                    stat.setString(4, String.valueOf(date_return));
+                    stat.execute();
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setContentText("Loan added succefuly !");
+                    alert.showAndWait();
+                }else{
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("This student has borrowed 8 books already!");
+                    alert.showAndWait();
+                }
+            }
+
+        }catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Check if you entered all informations required!");
+            alert.showAndWait();
+        }
+
+
 
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
