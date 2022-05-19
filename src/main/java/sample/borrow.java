@@ -24,6 +24,14 @@ public class borrow {
         this.issue_date = issue_date;
         this.return_date = return_date;
     }
+    public borrow(String bookID, String title, String author, String edition_date, String issue_date, String return_date){
+        this.bookID = bookID;
+        this.title = title;
+        this.author = author;
+        this.edition_date = edition_date;
+        this.issue_date = issue_date;
+        this.return_date = return_date;
+    }
 
     public String getBookID() {
         return bookID;

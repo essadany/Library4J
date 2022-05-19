@@ -19,7 +19,7 @@ import java.sql.SQLException;
 
 public class user {
     //attributs
-    private  String role;
+    public static String role;
     private   String password;
     private  String adress;
     private  String first_name;
@@ -27,7 +27,6 @@ public class user {
     private  int userID;
     //constroctor
     public user(String role, String password, String adress, String first_name, String last_name, int userID) {
-        this.role = role;
         this.password = password;
         this.adress = adress;
         this.first_name = first_name;
@@ -108,18 +107,20 @@ public class user {
             Stage stage;
             //Show user interface
             if (rs.getString("role").equals("student")){
-                path="/student.fxml";
+                path="/student1.fxml";
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
                 root = loader.load();
-                student controller = loader.getController();
-                controller.setUserProfile(rs.getInt(1));
+                student1 controller = loader.getController();
+                controller.setUserProfile(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(6));
+                role = "student";
 
             } else {
-                path="/librarian.fxml";
+                path="/librarian1.fxml";
                 FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
                 root = loader.load();
-                librarian controller = loader.getController();
-                controller.setUserProfile(rs.getInt("userID"));
+                librarian1 controller = loader.getController();
+                controller.setUserProfile(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(6));
+                role = "librarian";
             }
             Scene scene = new Scene(root,1000,700);
             stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
