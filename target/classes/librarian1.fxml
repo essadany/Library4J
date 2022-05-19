@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.librarian1">
+  <tabs>
+    <Tab text="My profile">
+      <content>
+          <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+              <children>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                      <center>
+                          <VBox prefHeight="685.0" prefWidth="490.0" spacing="50.0" BorderPane.alignment="CENTER">
+                              <children>
+                                  <ImageView fitHeight="142.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true">
+                                      <VBox.margin>
+                                          <Insets />
+                                      </VBox.margin>
+                                      <image>
+                                          <Image url="@logouser.png" />
+                                      </image>
+                                  </ImageView>
+                                  <Text fx:id="userID" layoutX="10.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ID">
+                                      <font>
+                                          <Font name="Garamond" size="24.0" />
+                                      </font>
+                                  </Text>
+                                  <Text fx:id="first_name" strokeType="OUTSIDE" strokeWidth="0.0" text="Name">
+                                      <font>
+                                          <Font name="Garamond" size="24.0" />
+                                      </font>
+                                  </Text>
+                                  <Text fx:id="last_name" strokeType="OUTSIDE" strokeWidth="0.0" text="Forname">
+                                      <font>
+                                          <Font name="Garamond" size="24.0" />
+                                      </font>
+                                  </Text>
+                                  <Text fx:id="adress" strokeType="OUTSIDE" strokeWidth="0.0" text="eMail">
+                                      <font>
+                                          <Font name="Garamond" size="24.0" />
+                                      </font>
+                                  </Text>
+                                  <Text fx:id="role" strokeType="OUTSIDE" strokeWidth="0.0" text="Role">
+                                      <font>
+                                          <Font name="Garamond" size="24.0" />
+                                      </font>
+                                  </Text>
+                              </children>
+                              <BorderPane.margin>
+                                  <Insets bottom="15.0" left="425.0" right="15.0" top="15.0" />
+                              </BorderPane.margin>
+                          </VBox>
+                      </center>
+                      <bottom>
+                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="650.0" BorderPane.alignment="CENTER">
+                              <children>
+                                  <Button fx:id="disconnectButtonProfile" contentDisplay="TOP" mnemonicParsing="false" onAction="#disconnect" prefHeight="146.0" prefWidth="173.0" text="Disconnect">
+                                      <font>
+                                          <Font name="Garamond" size="24.0" />
+                                      </font>
+                                      <graphic>
+                                          <ImageView fitHeight="96.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true">
+                                              <image>
+                                                  <Image url="@off.png" />
+                                              </image>
+                                          </ImageView>
+                                      </graphic>
+                                  </Button>
+                              </children>
+                              <BorderPane.margin>
+                                  <Insets />
+                              </BorderPane.margin>
+                              <padding>
+                                  <Insets bottom="15.0" left="5.0" right="5.0" />
+                              </padding>
+                          </HBox>
+                      </bottom>
+                  </BorderPane>
+              </children>
+          </StackPane>
+      </content>
+    </Tab>
+    <Tab text="Search book">
+      <content>
+          <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
+              <children>
+                  <TableView fx:id="table" layoutX="105.0" layoutY="92.0" prefHeight="568.0" prefWidth="844.0">
+                      <columns>
+                          <TableColumn fx:id="id" prefWidth="75.0" text="Id" />
+                          <TableColumn fx:id="title" prefWidth="250.0" text="Title" />
+                          <TableColumn fx:id="author" prefWidth="200.0" text="Author" />
+                          <TableColumn fx:id="date" prefWidth="100.0" text="Edition date" />
+                          <TableColumn fx:id="language" prefWidth="107.0" text="Language" />
+                          <TableColumn fx:id="status" prefWidth="111.4000244140625" text="Available" />
+                      </columns>
+                  </TableView>
+                  <Label layoutX="92.0" layoutY="14.0" prefHeight="17.0" prefWidth="138.0" text="Search a Book" />
+                  <Button fx:id="SearchBookButton" layoutX="852.0" layoutY="10.0" mnemonicParsing="false" onAction="#filter" prefHeight="25.0" prefWidth="54.0" />
+                  <ImageView fitHeight="31.0" fitWidth="36.0" layoutX="866.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@loupe.png" />
+                      </image>
+                  </ImageView>
+                  <ImageView fitHeight="25.0" fitWidth="38.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                      <image>
+                          <Image url="@return.png" />
+                      </image>
+                  </ImageView>
+                  <TextField fx:id="filterField" layoutX="175.0" layoutY="10.0" prefHeight="25.0" prefWidth="664.0" promptText="Search..." />
+                  <Label layoutX="105.0" layoutY="46.0" text="Filter" />
+                  <ComboBox fx:id="choiceBook" layoutX="175.0" layoutY="42.0" prefWidth="150.0" />
+              </children>
+          </Pane>
+      </content>
+    </Tab>
+      <Tab text="Manage users">
+          <content>
+              <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
+                  <children>
+                      <TableView fx:id="userTable" layoutX="59.0" layoutY="197.0" prefHeight="450.0" prefWidth="885.0">
+                          <columns>
+                              <TableColumn fx:id="idManageUser" prefWidth="75.0" text="Id" />
+                              <TableColumn fx:id="f_name" prefWidth="200.0" text="First Name" />
+                              <TableColumn fx:id="l_name" prefWidth="200.0" text="Last Name" />
+                              <TableColumn fx:id="adressManageUser" prefWidth="225.0" text="Adress" />
+                              <TableColumn fx:id="roleManageUser" prefWidth="100.0" text="Role" />
+                              <TableColumn fx:id="action" prefWidth="83.4000244140625" text="Action" />
+                          </columns>
+                      </TableView>
+                      <Label layoutX="92.0" layoutY="14.0" prefHeight="17.0" prefWidth="138.0" text="Search an user" />
+                      <Button fx:id="searchButton" layoutX="852.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="54.0" />
+                      <ImageView fitHeight="31.0" fitWidth="36.0" layoutX="866.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                          <image>
+                              <Image url="@loupe.png" />
+                          </image>
+                      </ImageView>
+                      <TextField fx:id="searchuser_tf" layoutX="175.0" layoutY="10.0" prefHeight="25.0" prefWidth="664.0" promptText="Search..." />
+                      <Label layoutX="105.0" layoutY="46.0" text="Filter" />
+                      <ChoiceBox layoutX="175.0" layoutY="42.0" prefWidth="150.0" />
+                      <Button fx:id="addButton" layoutX="100.0" layoutY="152.0" mnemonicParsing="false" onAction="#getAddView" prefHeight="25.0" prefWidth="108.0" text="Add an user " />
+                      <Button fx:id="renewButton" layoutX="250.0" layoutY="152.0" mnemonicParsing="false" onAction="#refreshTable" prefHeight="25.0" prefWidth="108.0" text="Renew table" />
+                  </children>
+              </Pane>
+          </content>
+      </Tab>
+      <Tab text="Manage loans">
+          <content>
+              <TabPane fx:id="loansPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
+                  <tabs>
+                      <Tab fx:id="issue1Tab" text="Issue a book">
+                          <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                  <children>
+                                      <Label layoutX="88.0" layoutY="78.0" prefHeight="18.0" prefWidth="181.0" text="Book details">
+                                          <font>
+                                              <Font name="System Bold" size="23.0" />
+                                          </font>
+                                      </Label>
+                                      <AnchorPane layoutX="88.0" layoutY="136.0" prefHeight="403.0" prefWidth="334.0" style="-fx-background-color: #CCCCCC;">
+                                          <children>
+                                              <Label layoutX="14.0" layoutY="45.0" text="Book id" />
+                                              <Label fx:id="issue1Author" layoutX="93.0" layoutY="167.0" prefHeight="34.0" prefWidth="140.0" text="Author">
+                                                  <font>
+                                                      <Font name="Garamond" size="20.0" />
+                                                  </font></Label>
+                                              <TextField fx:id="bookID" layoutX="102.0" layoutY="41.0" prefWidth="150.0" />
+                                              <Button fx:id="issue1SearchBookButton" layoutX="262.0" layoutY="41.0" mnemonicParsing="false" onAction="#searchBook" text="Search" />
+                                              <Label fx:id="issue1Title" layoutX="93.0" layoutY="113.0" prefHeight="34.0" prefWidth="140.0" text="Title">
+                                                  <font>
+                                                      <Font name="Garamond" size="20.0" />
+                                                  </font>
+                                              </Label>
+                                              <Label fx:id="issue1Language" layoutX="93.0" layoutY="224.0" prefHeight="34.0" prefWidth="140.0" text="Language">
+                                                  <font>
+                                                      <Font name="Garamond" size="20.0" />
+                                                  </font>
+                                              </Label>
+                                              <Label fx:id="issue1DoE" layoutX="93.0" layoutY="287.0" prefHeight="34.0" prefWidth="140.0" text="Date of Edition">
+                                                  <font>
+                                                      <Font name="Garamond" size="20.0" />
+                                                  </font>
+                                              </Label>
+                                          </children>
+                                      </AnchorPane>
+                                      <AnchorPane layoutX="480.0" layoutY="136.0" prefHeight="403.0" prefWidth="334.0" style="-fx-background-color: #CCCCCC;">
+                                          <children>
+                                              <Label layoutX="14.0" layoutY="45.0" text="Student id" />
+                                              <TextField fx:id="userIDIssue" layoutX="92.0" layoutY="41.0" />
+                                              <Button fx:id="issue1SearchStudentButton" layoutX="258.0" layoutY="41.0" mnemonicParsing="false" onAction="#searchStudent" text="Search" />
+                                              <Label fx:id="issue1FirstName" layoutX="97.0" layoutY="112.0" prefHeight="34.0" prefWidth="140.0" text="First Name">
+                                                  <font>
+                                                      <Font name="Garamond" size="20.0" />
+                                                  </font>
+                                              </Label>
+                                              <Label fx:id="issue1LastName" layoutX="97.0" layoutY="168.0" prefHeight="34.0" prefWidth="140.0" text="Last Name">
+                                                  <font>
+                                                      <Font name="Garamond" size="20.0" />
+                                                  </font>
+                                              </Label>
+                                              <Label fx:id="issue1Adress" layoutX="97.0" layoutY="223.0" prefHeight="34.0" prefWidth="140.0" text="Adress">
+                                                  <font>
+                                                      <Font name="Garamond" size="20.0" />
+                                                  </font>
+                                              </Label>
+                                          </children>
+                                      </AnchorPane>
+                                      <Label layoutX="500.0" layoutY="78.0" prefHeight="18.0" prefWidth="181.0" text="Student details">
+                                          <font>
+                                              <Font name="System Bold" size="23.0" />
+                                          </font>
+                                      </Label>
+                                      <Button fx:id="issue1issueButton" layoutX="375.0" layoutY="594.0" mnemonicParsing="false" onAction="#borrow" prefHeight="26.0" prefWidth="158.0" text="Issue" />
+                                      <DatePicker fx:id="issue1DateIssue" layoutX="373.0" layoutY="556.0" prefHeight="26.0" prefWidth="160.0" />
+                                      <Label layoutX="284.0" layoutY="561.0" text="Date of Issue" />
+                                  </children></AnchorPane>
+                          </content>
+                      </Tab>
+                      <Tab fx:id="return1Tab" text="Return a book">
+                          <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                  <children>
+                                      <AnchorPane layoutX="102.0" layoutY="130.0" prefHeight="412.0" prefWidth="795.0" style="-fx-background-color: #CCCCCC;">
+                                          <children>
+                                              <Label layoutX="456.0" layoutY="36.0" text="Book ID" />
+                                              <TextField fx:id="return1Bookid" layoutX="591.0" layoutY="32.0" />
+                                          </children>
+                                      </AnchorPane>
+                                      <Label layoutX="102.0" layoutY="58.0" text="Return Panel">
+                                          <font>
+                                              <Font name="System Bold" size="23.0" />
+                                          </font>
+                                      </Label>
+                                      <Label layoutX="322.0" layoutY="578.0" text="Return date" />
+                                      <DatePicker fx:id="return1ReturnDate" layoutX="412.0" layoutY="574.0" />
+                                      <Button fx:id="return1ReturnButton" layoutX="410.0" layoutY="618.0" mnemonicParsing="false" onAction="#returnBook" prefHeight="26.0" prefWidth="179.0" text="Return" />
+                                  </children></AnchorPane>
+                          </content>
+                      </Tab>
+                      <Tab fx:id="issue2Tab" onSelectionChanged="#issueTable" text="Issue table">
+                          <content>
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                  <children>
+                                      <TableView fx:id="issue2SearchTableView" layoutX="20.0" layoutY="83.0" prefHeight="568.0" prefWidth="958.0">
+                                          <columns>
+                                              <TableColumn fx:id="bookid" prefWidth="50.0" text="Book ID" />
+                                              <TableColumn fx:id="titleLoan" prefWidth="125.0" text="Title" />
+                                              <TableColumn fx:id="authorLoan" prefWidth="125.0" text="Author" />
+                                              <TableColumn fx:id="editiondate" prefWidth="100.0" text="Edition date" />
+                                              <TableColumn fx:id="studentid" prefWidth="75.0" text="Student ID" />
+                                              <TableColumn fx:id="firstname" prefWidth="75.0" text="First name" />
+                                              <TableColumn fx:id="lastname" prefWidth="89.20001220703125" text="Last name" />
+                                              <TableColumn fx:id="issuedate" prefWidth="112.5999755859375" text="Issue date" />
+                                              <TableColumn fx:id="limitdate" prefWidth="112.20001220703125" text="Limit date" />
+                                          </columns>
+                                      </TableView>
+                                      <Button fx:id="issue2SearchButton" layoutX="891.0" layoutY="30.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="54.0" />
+                                      <ImageView fitHeight="31.0" fitWidth="36.0" layoutX="905.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+                                          <image>
+                                              <Image url="@loupe.png" />
+                                          </image>
+                                      </ImageView>
+                                      <TextField fx:id="issue2SearchBar" layoutX="123.0" layoutY="30.0" prefHeight="26.0" prefWidth="622.0" promptText="Search an issued book..." />
+                                  </children></AnchorPane>
+                          </content>
+                      </Tab>
+                  </tabs>
+              </TabPane>
+
+          </content>
+      </Tab>
+  </tabs>
+</TabPane>
