@@ -73,6 +73,7 @@ public class SearchBookController implements Initializable {
 
     @FXML
     public void filter(ActionEvent event) throws SQLException {
+        table.getItems().clear();
         try {
             Connect conn = new Connect();
 

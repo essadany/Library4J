@@ -129,7 +129,7 @@
         </Pane>
       </content>
     </Tab>
-    <Tab text="My loans">
+    <Tab onSelectionChanged="#Myloans" text="My loans">
       <content>
         <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
           <children>

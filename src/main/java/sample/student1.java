@@ -129,6 +129,7 @@ public class student1 implements Initializable {
 
     @FXML
     public void filter(ActionEvent event) throws SQLException {
+        table.getItems().clear();
         try {
             Connect conn = new Connect();
 
@@ -232,21 +233,9 @@ public class student1 implements Initializable {
     private TableColumn<borrow, String> dateLoan;
 
     public ObservableList<borrow> dataLoan = FXCollections.observableArrayList();
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void Myloans(){
+        history.getItems().clear();
         Connect conn = new Connect();
-        ////////////////////////Search book
-        id.setCellValueFactory(new PropertyValueFactory<book, String>("ark"));
-        title.setCellValueFactory(new PropertyValueFactory<book, String>("title"));
-        author.setCellValueFactory(new PropertyValueFactory<book, String>("author"));
-        date.setCellValueFactory(new PropertyValueFactory<book, String>("year"));
-        language.setCellValueFactory(new PropertyValueFactory<book, String>("language"));
-        status.setCellValueFactory(new PropertyValueFactory<book, String>("status"));
-
-        table.setItems(data);
-        choiceBook.setItems(list);
-        /////////////////////////////////////////////////////////////////////////////////////////////////
         try{
             PreparedStatement stat = conn.connection().prepareStatement("select * from loans where userID=?");
             stat.setString(1, userID.getText());
@@ -284,6 +273,23 @@ public class student1 implements Initializable {
             alert.setContentText("There is a problem connection to database or api rest!");
             alert.showAndWait();
         }
+    }
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        ////////////////////////Search book
+        id.setCellValueFactory(new PropertyValueFactory<book, String>("ark"));
+        title.setCellValueFactory(new PropertyValueFactory<book, String>("title"));
+        author.setCellValueFactory(new PropertyValueFactory<book, String>("author"));
+        date.setCellValueFactory(new PropertyValueFactory<book, String>("year"));
+        language.setCellValueFactory(new PropertyValueFactory<book, String>("language"));
+        status.setCellValueFactory(new PropertyValueFactory<book, String>("status"));
+        table.setItems(data);
+        choiceBook.setItems(list);
+        //////////////////////My loans
+
 
         titleLoan.setCellValueFactory(new PropertyValueFactory<borrow, String>("title"));
         authorLoan.setCellValueFactory(new PropertyValueFactory<borrow, String>("author"));
