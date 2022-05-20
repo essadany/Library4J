@@ -134,7 +134,7 @@ public class student1 implements Initializable {
             Connect conn = new Connect();
 
             String choice = choiceBook.getSelectionModel().getSelectedItem().toString();
-            String input = filterField.getText();
+            String input = filterField.getText().replace(" ","%20");;
             String result="";
             switch (choice) {
                 case "author":

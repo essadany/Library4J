@@ -56,14 +56,14 @@
                           </VBox>
                       </center>
                       <bottom>
-                          <HBox prefHeight="100.0" prefWidth="200.0" spacing="650.0" BorderPane.alignment="CENTER">
+                          <HBox prefHeight="132.0" prefWidth="1000.0" spacing="650.0" BorderPane.alignment="CENTER">
                               <children>
-                                  <Button fx:id="disconnectButtonProfile" contentDisplay="TOP" mnemonicParsing="false" onAction="#disconnect" prefHeight="146.0" prefWidth="173.0" text="Disconnect">
+                                  <Button fx:id="disconnectButtonProfile" contentDisplay="TOP" mnemonicParsing="false" onAction="#disconnect" prefHeight="99.0" prefWidth="141.0" text="Disconnect">
                                       <font>
                                           <Font name="Garamond" size="24.0" />
                                       </font>
                                       <graphic>
-                                          <ImageView fitHeight="96.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true">
+                                          <ImageView fitHeight="49.0" fitWidth="96.0" pickOnBounds="true" preserveRatio="true">
                                               <image>
                                                   <Image url="@off.png" />
                                               </image>
@@ -92,7 +92,7 @@
                       <columns>
                           <TableColumn fx:id="id" prefWidth="75.0" text="Id" />
                           <TableColumn fx:id="title" prefWidth="250.0" text="Title" />
-                          <TableColumn fx:id="author" prefWidth="200.0" text="Author" />
+                          <TableColumn fx:id="author" prefWidth="200.0" text="Publisher" />
                           <TableColumn fx:id="date" prefWidth="100.0" text="Edition date" />
                           <TableColumn fx:id="language" prefWidth="107.0" text="Language" />
                           <TableColumn fx:id="status" prefWidth="111.4000244140625" text="Available" />
@@ -103,11 +103,6 @@
                   <ImageView fitHeight="31.0" fitWidth="36.0" layoutX="866.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                       <image>
                           <Image url="@loupe.png" />
-                      </image>
-                  </ImageView>
-                  <ImageView fitHeight="25.0" fitWidth="38.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
-                      <image>
-                          <Image url="@return.png" />
                       </image>
                   </ImageView>
                   <TextField fx:id="filterField" layoutX="175.0" layoutY="10.0" prefHeight="25.0" prefWidth="664.0" promptText="Search..." />
@@ -221,9 +216,9 @@
                       </Tab>
                       <Tab fx:id="return1Tab" text="Return a book">
                           <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="500.0" prefWidth="1000.0">
                                   <children>
-                                      <AnchorPane layoutX="102.0" layoutY="130.0" prefHeight="412.0" prefWidth="795.0" style="-fx-background-color: #CCCCCC;">
+                                      <AnchorPane layoutX="102.0" layoutY="130.0" prefHeight="356.0" prefWidth="795.0" style="-fx-background-color: #CCCCCC;" AnchorPane.bottomAnchor="185.20000000000005">
                                           <children>
                                               <Label layoutX="456.0" layoutY="36.0" text="Book ID" />
                                               <TextField fx:id="return1Bookid" layoutX="591.0" layoutY="32.0" />
@@ -236,8 +231,11 @@
                                       </Label>
                                       <Label layoutX="322.0" layoutY="578.0" text="Return date" />
                                       <DatePicker fx:id="return1ReturnDate" layoutX="412.0" layoutY="574.0" />
-                                      <Button fx:id="return1ReturnButton" layoutX="410.0" layoutY="618.0" mnemonicParsing="false" onAction="#returnBook" prefHeight="26.0" prefWidth="179.0" text="Return" />
-                                  </children></AnchorPane>
+                                      <Button fx:id="return1ReturnButton" layoutX="410.0" layoutY="618.0" mnemonicParsing="false" onAction="#returnBook" prefHeight="26.0" prefWidth="179.0" text="Return" AnchorPane.bottomAnchor="40.0" />
+                                  </children>
+                           <padding>
+                              <Insets left="200.0" />
+                           </padding></AnchorPane>
                           </content>
                       </Tab>
                       <Tab fx:id="issue2Tab" onSelectionChanged="#issueTable" text="Issue table">
@@ -246,24 +244,19 @@
                                   <children>
                                       <TableView fx:id="issue2SearchTableView" layoutX="20.0" layoutY="83.0" prefHeight="568.0" prefWidth="958.0">
                                           <columns>
-                                              <TableColumn fx:id="bookid" prefWidth="50.0" text="Book ID" />
-                                              <TableColumn fx:id="titleLoan" prefWidth="125.0" text="Title" />
-                                              <TableColumn fx:id="authorLoan" prefWidth="125.0" text="Author" />
-                                              <TableColumn fx:id="editiondate" prefWidth="100.0" text="Edition date" />
+                                              <TableColumn fx:id="bookid" prefWidth="80.39999771118164" text="Book ID" />
+                                              <TableColumn fx:id="titleLoan" prefWidth="117.59999084472656" text="Title" />
+                                              <TableColumn fx:id="authorLoan" prefWidth="121.59999084472656" text="Publisher" />
+                                              <TableColumn fx:id="editiondate" prefWidth="84.0" text="Edition date" />
                                               <TableColumn fx:id="studentid" prefWidth="75.0" text="Student ID" />
                                               <TableColumn fx:id="firstname" prefWidth="75.0" text="First name" />
-                                              <TableColumn fx:id="lastname" prefWidth="89.20001220703125" text="Last name" />
-                                              <TableColumn fx:id="issuedate" prefWidth="112.5999755859375" text="Issue date" />
-                                              <TableColumn fx:id="limitdate" prefWidth="112.20001220703125" text="Limit date" />
+                                              <TableColumn fx:id="lastname" prefWidth="112.0" text="Last name" />
+                                              <TableColumn fx:id="issuedate" prefWidth="118.0" text="Issue date" />
+                                              <TableColumn fx:id="limitdate" prefWidth="112.0" text="Limit date" />
+                                    <TableColumn fx:id="late" prefWidth="65.0" text="Late" />
                                           </columns>
                                       </TableView>
-                                      <Button fx:id="issue2SearchButton" layoutX="891.0" layoutY="30.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="54.0" />
-                                      <ImageView fitHeight="31.0" fitWidth="36.0" layoutX="905.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
-                                          <image>
-                                              <Image url="@loupe.png" />
-                                          </image>
-                                      </ImageView>
-                                      <TextField fx:id="issue2SearchBar" layoutX="123.0" layoutY="30.0" prefHeight="26.0" prefWidth="622.0" promptText="Search an issued book..." />
+                                      <TextField fx:id="filterIssue" layoutX="123.0" layoutY="30.0" prefHeight="26.0" prefWidth="622.0" promptText="Search an issued book..." />
                                   </children></AnchorPane>
                           </content>
                       </Tab>

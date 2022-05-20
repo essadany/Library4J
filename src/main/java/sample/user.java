@@ -27,7 +27,7 @@ public class user {
     private  String last_name;
     private  int userID;
     //constroctor
-    public user(String role, String password, String adress, String first_name, String last_name, int userID) {
+    public user(String password, String adress, String first_name, String last_name, int userID) {
         this.password = password;
         this.adress = adress;
         this.first_name = first_name;

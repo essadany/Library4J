@@ -2,6 +2,8 @@ package sample;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -23,11 +25,11 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 public class librarian1 implements Initializable {
@@ -124,7 +126,7 @@ public class librarian1 implements Initializable {
             Connect conn = new Connect();
 
             String choice = choiceBook.getSelectionModel().getSelectedItem().toString();
-            String input = filterField.getText();
+            String input = filterField.getText().replace(" ","%20");
             String result="";
             switch (choice) {
                 case "author":
@@ -278,34 +280,7 @@ public class librarian1 implements Initializable {
     private TabPane loansPane;
 
     @FXML
-    private Label return1Adress;
-
-    @FXML
-    private Label return1Author;
-
-    @FXML
-    private Button return1BackButton;
-
-    @FXML
     private TextField return1Bookid;
-
-    @FXML
-    private Label return1DoE;
-
-    @FXML
-    private Label return1DoI;
-
-    @FXML
-    private Label return1FirstName;
-
-    @FXML
-    private Label return1Language;
-
-    @FXML
-    private Label return1LastName;
-
-    @FXML
-    private Button return1ReturnButton;
 
     @FXML
     private DatePicker return1ReturnDate;
@@ -462,7 +437,7 @@ public class librarian1 implements Initializable {
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @FXML
-    private TextField issue2SearchBar;
+    private TextField filterIssue;
 
     @FXML
     private Button issue2SearchButton;
@@ -495,13 +470,15 @@ public class librarian1 implements Initializable {
 
     @FXML
     private TableColumn<borrow, String> firstname;
-
+    @FXML
+    private TableColumn<borrow, String> late;
     @FXML
     public ObservableList<borrow> dataLoan = FXCollections.observableArrayList();
     //////////////////////////////issue Table
     @FXML
     public void issueTable(){
-        issue2SearchTableView.getItems().clear();
+        String l="";
+        //issue2SearchTableView.getItems().clear();
         Connect conn = new Connect();
         try{
             Statement stat = conn.connection().createStatement();
@@ -532,7 +509,16 @@ public class librarian1 implements Initializable {
                 statement.setString(1, String.valueOf(res.getInt(2)));
                 ResultSet res1 = statement.executeQuery();
                 if (res1.next()){
-                    borrow loan = new borrow(res.getString(3), err.getElementsByTagName("dc:title").item(0).getTextContent(), err.getElementsByTagName("dc:publisher").item(0).getTextContent(), err.getElementsByTagName("dc:date").item(0).getTextContent(), res.getInt(2), res1.getString(2), res1.getString(3), res.getString(4), res.getString(5));
+                    LocalDate date = LocalDate.now();
+                    SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd");
+                    Date pdte = sdf.parse(String.valueOf(date));
+                    long diff = res.getDate(5).getTime() - res.getDate(4).getTime();
+                    float days = (diff / (1000*60*60*24));
+
+                    if ((res.getDate(5).before(pdte)) && days==25){
+                        l="X";
+                    }
+                    borrow loan = new borrow(res.getString(3), err.getElementsByTagName("dc:title").item(0).getTextContent(), err.getElementsByTagName("dc:publisher").item(0).getTextContent(), err.getElementsByTagName("dc:date").item(0).getTextContent(), res.getInt(2), res1.getString(2), res1.getString(3), res.getString(4), res.getString(5),l);
                     dataLoan.add(loan);
                 }
 
@@ -543,6 +529,9 @@ public class librarian1 implements Initializable {
             alert.show();
 
         }
+
+
+
     }
     /////////////////////////////////////////////////////////////////////
 
@@ -569,8 +558,39 @@ public class librarian1 implements Initializable {
         bookid.setCellValueFactory(new PropertyValueFactory<borrow, String>("bookID"));
         issuedate.setCellValueFactory(new PropertyValueFactory<borrow, String>("issue_date"));
         limitdate.setCellValueFactory(new PropertyValueFactory<borrow, String>("return_date"));
+        late.setCellValueFactory(new PropertyValueFactory<borrow, String>("late"));
         ///////////////////////////////////////////////////////////////////////
-        issue2SearchTableView.setItems(dataLoan);
+        // Wrap the ObservableList in a FilteredList (initially display all data).
+        FilteredList<borrow> filteredData = new FilteredList<>(dataLoan, b -> true);
+
+        // 2. Set the filter Predicate whenever the filter changes.
+        filterIssue.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredData.setPredicate(borrow -> {
+                // If filter text is empty, display all issues.
+
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+                if (borrow.getTitle().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches book title.
+                } else if (borrow.getFirst_name().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches first name.
+                }else if (borrow.getLast_name().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                } else if (String.valueOf(borrow.getUserID()).contains(lowerCaseFilter))
+                    return true; // Filter matches userID.
+                else
+                    return false; // Does not match.
+            });
+        });
+
+        // 3. Wrap the FilteredList in a SortedList.
+        SortedList<borrow> sortedData = new SortedList<>(filteredData);
+        // 4. Bind the SortedList comparator to the TableView comparator.
+        // 	  Otherwise, sorting the TableView would have no effect.
+        sortedData.comparatorProperty().bind(issue2SearchTableView.comparatorProperty());
+        issue2SearchTableView.setItems(sortedData);
         choiceBook.setItems(list);
         table.setItems(data);
 

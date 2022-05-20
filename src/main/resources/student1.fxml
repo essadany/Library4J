@@ -56,28 +56,16 @@
                 </VBox>
               </center>
               <bottom>
-                <HBox prefHeight="100.0" prefWidth="200.0" spacing="650.0" BorderPane.alignment="CENTER">
+                <HBox prefHeight="128.0" prefWidth="1000.0" spacing="650.0" BorderPane.alignment="CENTER">
                   <children>
-                    <Button fx:id="disconnectButtonProfile" contentDisplay="TOP" mnemonicParsing="false" onAction="#disconnect" prefHeight="146.0" prefWidth="173.0" text="Disconnect">
+                    <Button fx:id="disconnectButtonProfile" contentDisplay="TOP" mnemonicParsing="false" onAction="#disconnect" prefHeight="39.0" prefWidth="140.0" text="Disconnect">
                       <font>
                         <Font name="Garamond" size="24.0" />
                       </font>
                       <graphic>
-                        <ImageView fitHeight="96.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="44.0" fitWidth="68.0" pickOnBounds="true" preserveRatio="true">
                           <image>
                             <Image url="@off.png" />
-                          </image>
-                        </ImageView>
-                      </graphic>
-                    </Button>
-                    <Button fx:id="backButtonProfile" contentDisplay="TOP" mnemonicParsing="false" onAction="#profileBack" prefHeight="146.0" prefWidth="173.0" text="Back">
-                      <font>
-                        <Font name="Garamond" size="24.0" />
-                      </font>
-                      <graphic>
-                        <ImageView fitHeight="96.0" fitWidth="138.0" pickOnBounds="true" preserveRatio="true">
-                          <image>
-                            <Image url="@back.png" />
                           </image>
                         </ImageView>
                       </graphic>
@@ -104,7 +92,7 @@
               <columns>
                 <TableColumn fx:id="id" prefWidth="75.0" text="Id" />
                 <TableColumn fx:id="title" prefWidth="250.0" text="Title" />
-                <TableColumn fx:id="author" prefWidth="200.0" text="Author" />
+                <TableColumn fx:id="author" prefWidth="200.0" text="Publisher" />
                 <TableColumn fx:id="date" prefWidth="100.0" text="Edition date" />
                 <TableColumn fx:id="language" prefWidth="107.0" text="Language" />
                 <TableColumn fx:id="status" prefWidth="111.4000244140625" text="Available" />
@@ -115,11 +103,6 @@
             <ImageView fitHeight="31.0" fitWidth="36.0" layoutX="866.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
               <image>
                 <Image url="@loupe.png" />
-              </image>
-            </ImageView>
-            <ImageView fitHeight="25.0" fitWidth="38.0" layoutX="14.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
-              <image>
-                <Image url="@return.png" />
               </image>
             </ImageView>
             <TextField fx:id="filterField" layoutX="175.0" layoutY="10.0" prefHeight="25.0" prefWidth="664.0" promptText="Search..." />
@@ -133,61 +116,26 @@
       <content>
         <StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1">
           <children>
-            <BorderPane prefHeight="642.0" prefWidth="1000.0">
+            <BorderPane prefHeight="650.0" prefWidth="916.0">
               <StackPane.margin>
                 <Insets top="50.0" />
               </StackPane.margin>
               <center>
-                <TableView fx:id="history" prefHeight="454.0" prefWidth="979.0" BorderPane.alignment="CENTER">
+                <TableView fx:id="history" prefHeight="612.0" prefWidth="897.0" BorderPane.alignment="CENTER">
                   <columns>
-                    <TableColumn fx:id="bookIDLoan" prefWidth="100.0" text="Id" />
-                    <TableColumn fx:id="titleLoan" prefWidth="250.0" text="Title" />
-                    <TableColumn fx:id="authorLoan" prefWidth="200.0" text="Author" />
+                    <TableColumn fx:id="bookIDLoan" prefWidth="130.0" text="Id" />
+                    <TableColumn fx:id="titleLoan" prefWidth="220.4000244140625" text="Title" />
+                    <TableColumn fx:id="authorLoan" prefWidth="200.0" text="Publisher" />
                     <TableColumn fx:id="dateLoan" prefWidth="100.0" text="Edition date" />
                     <TableColumn fx:id="date_BorrowLoan" prefWidth="200.0" text="Borrow date" />
                     <TableColumn fx:id="date_ReturnLoan" prefWidth="171.9998779296875" text="Date of render" />
                   </columns>
                 </TableView>
               </center>
-              <bottom>
-                <Button fx:id="ReturnButton" contentDisplay="TOP" mnemonicParsing="false" onAction="#backScene" prefHeight="73.0" prefWidth="146.0" text="Back" BorderPane.alignment="CENTER">
-                  <font>
-                    <Font name="Garamond" size="24.0" />
-                  </font>
-                  <graphic>
-                    <ImageView fitHeight="76.0" fitWidth="63.0" pickOnBounds="true" preserveRatio="true">
-                      <image>
-                        <Image url="@back.png" />
-                      </image>
-                    </ImageView>
-                  </graphic>
-                  <BorderPane.margin>
-                    <Insets bottom="15.0" left="800.0" />
-                  </BorderPane.margin>
-                </Button>
-              </bottom>
               <top>
                 <HBox prefHeight="37.0" prefWidth="1000.0" spacing="50.0" BorderPane.alignment="CENTER" />
               </top>
             </BorderPane>
-            <Button fx:id="disconnectButtonHistory" contentDisplay="TOP" mnemonicParsing="false" onAction="#disconnect" prefHeight="114.0" prefWidth="147.0" text="Disconnect" StackPane.alignment="BOTTOM_LEFT">
-              <font>
-                <Font name="Garamond" size="24.0" />
-              </font>
-              <graphic>
-                <ImageView fitHeight="74.0" fitWidth="86.0" pickOnBounds="true" preserveRatio="true">
-                  <image>
-                    <Image url="@off.png" />
-                  </image>
-                </ImageView>
-              </graphic>
-              <padding>
-                <Insets bottom="-15.0" left="-15.0" right="-15.0" top="-15.0" />
-              </padding>
-              <StackPane.margin>
-                <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
-              </StackPane.margin>
-            </Button>
           </children>
         </StackPane>
       </content>

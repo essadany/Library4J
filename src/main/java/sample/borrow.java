@@ -12,8 +12,9 @@ public class borrow {
     private String last_name;
     private String issue_date;
     private String return_date;
+    private String late;
     //constroctor
-    public borrow(String bookID, String title, String author, String edition_date, int userID, String first_name, String last_name, String issue_date, String return_date) {
+    public borrow(String bookID, String title, String author, String edition_date, int userID, String first_name, String last_name, String issue_date, String return_date,String late) {
         this.bookID = bookID;
         this.title = title;
         this.author = author;
@@ -23,6 +24,7 @@ public class borrow {
         this.last_name = last_name;
         this.issue_date = issue_date;
         this.return_date = return_date;
+        this.late = late;
     }
     public borrow(String bookID, String title, String author, String edition_date, String issue_date, String return_date){
         this.bookID = bookID;
@@ -103,5 +105,13 @@ public class borrow {
 
     public void setReturn_date(String return_date) {
         this.return_date = return_date;
+    }
+
+    public String getLate() {
+        return late;
+    }
+
+    public void setLate(String late) {
+        this.late = late;
     }
 }
