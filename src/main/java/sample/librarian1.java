@@ -481,6 +481,7 @@ public class librarian1 implements Initializable {
     //////////////////////////////issue Table
     @FXML
     public void issueTable() {
+        //issue2SearchTableView.refresh();
         String l = "";
         Connect conn = new Connect();
         try {
@@ -568,7 +569,36 @@ public class librarian1 implements Initializable {
         f_name.setCellValueFactory(new PropertyValueFactory<user, String>("first_name"));
         l_name.setCellValueFactory(new PropertyValueFactory<user, String>("last_name"));
         adressManageUser.setCellValueFactory(new PropertyValueFactory<user, String>("adress"));
-        //bookborrowed.setCellValueFactory(new PropertyValueFactory<user, Integer>("bookBorrowed"));
+        bookborrowed.setCellValueFactory(new PropertyValueFactory<user, Integer>("nbBook"));
+        // Wrap the ObservableList in a FilteredList (initially display all data).
+        FilteredList<user> filteredDataUser = new FilteredList<>(dataUser, b -> true);
+        searchuser_tf.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredDataUser.setPredicate(user -> {
+                // If filter text is empty, display all issues.
+
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+                String lowerCaseFilter = newValue.toLowerCase();
+                if (user.getAdress().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches user adress.
+                } else if (user.getFirst_name().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches first name.
+                } else if (user.getLast_name().toLowerCase().contains(lowerCaseFilter)) {
+                    return true; // Filter matches last name.
+                } else if (String.valueOf(user.getUserID()).contains(lowerCaseFilter))
+                    return true; // Filter matches userID.
+                else
+                    return false; // Does not match.
+            });
+        });
+
+        // 3. Wrap the FilteredList in a SortedList.
+        SortedList<user> sortedDataUser = new SortedList<>(filteredDataUser);
+        // 4. Bind the SortedList comparator to the TableView comparator.
+        // 	  Otherwise, sorting the TableView would have no effect.
+        sortedDataUser.comparatorProperty().bind(userTable.comparatorProperty());
+        userTable.setItems(sortedDataUser);
 
         ///////////////////////////////////////////////////////////////////////
         // Wrap the ObservableList in a FilteredList (initially display all data).
@@ -604,7 +634,7 @@ public class librarian1 implements Initializable {
         issue2SearchTableView.setItems(sortedData);
         choiceBook.setItems(list);
         table.setItems(data);
-        userTable.setItems(dataUser);
+
 
 
     }
@@ -664,8 +694,8 @@ public class librarian1 implements Initializable {
     @FXML
     private TableColumn<user, String> l_name;
 
-    //@FXML
-    //private TableColumn<user, Integer> bookborrowed;
+    @FXML
+    private TableColumn<user, Integer> bookborrowed;
 
     @FXML
     private Button searchButton;
@@ -680,29 +710,31 @@ public class librarian1 implements Initializable {
     public ObservableList<user> dataUser = FXCollections.observableArrayList();
 
     public void refreshTable(ActionEvent event) {
-
+        //userTable.getItems().removeAll();
+        int j=0;
         Connect conn = new Connect();
         try {
 
-            PreparedStatement ps = conn.connection().prepareStatement("select * from users");
-            ResultSet resUser = ps.executeQuery();
+            Statement ps = conn.connection().createStatement();
+            ResultSet resUser = ps.executeQuery("select * from users");
             while (resUser.next()) {
+                PreparedStatement sta = conn.connection().prepareStatement("select * from loans where userID = ? and DATEDIFF(loans.date_Return,loans.date_Borrow)=25");
+                sta.setString(1, String.valueOf(resUser.getInt(1)));
+                ResultSet rest = sta.executeQuery();
+                if (!(rest.next())){
+                    j=0;
+                }
+                while (rest.next()) {
+                    j++;
+                }
 
-                user display = new user(resUser.getInt(1),resUser.getString(2), resUser.getString(3),resUser.getString(4)); //resUser.getEnum(6));
+                user display = new user(resUser.getInt(1),resUser.getString(2), resUser.getString(3),resUser.getString(4),j);
                 dataUser.add(display);
-
-                /*PreparedStatement ps2 = conn.connection().prepareStatement("select count(*) as bookBorrowed from users where userID =(select userID from loans) ");
-                ResultSet resCount = ps2.executeQuery();
-                if (resCount.next()){
-
-                    resCount.getInt("bookBorrowed");
-
-                }*/
             }
 
         }catch (Exception e){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("please Check if you entered all informations required!");
+            alert.setContentText("A problem in database !");
             alert.showAndWait();
         }
 

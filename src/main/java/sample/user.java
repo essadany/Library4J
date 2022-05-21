@@ -26,6 +26,7 @@ public class user {
     private  String first_name;
     private  String last_name;
     private  int userID;
+    private int nbBook;
     //constroctor
     public user(String password, String adress, String first_name, String last_name, int userID) {
         this.password = password;
@@ -35,12 +36,13 @@ public class user {
         this.userID = userID;
     }
 
-    public user(int userID, String first_name, String last_name,String adress) {
+    public user(int userID, String first_name, String last_name,String adress, int nbBook) {
 
         this.adress = adress;
         this.first_name = first_name;
         this.last_name = last_name;
         this.userID = userID;
+        this.nbBook = nbBook;
     }
 
     public user() {
@@ -48,6 +50,14 @@ public class user {
     }
 
     //getters
+
+    public int getNbBook() {
+        return nbBook;
+    }
+
+    public void setNbBook(int nbBook) {
+        this.nbBook = nbBook;
+    }
 
     public String getPassword() {
         return this.password;
