@@ -9,8 +9,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="384.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="384.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.addUser">   <children>
       <HBox prefHeight="62.0" prefWidth="384.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add an user to the table" wrappingWidth="181.25665283203125">

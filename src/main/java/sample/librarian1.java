@@ -6,11 +6,15 @@ import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -59,6 +63,7 @@ public class librarian1 implements Initializable {
     private Text userID;
     //instance of setScene class
     setScene scene = new setScene();
+
     @FXML
     void disconnect(ActionEvent event) throws IOException {
         scene.disconnect(event);
@@ -66,7 +71,7 @@ public class librarian1 implements Initializable {
     }
 
 
-    public void setUserProfile(int id,String f,String l,String a, String r) {
+    public void setUserProfile(int id, String f, String l, String a, String r) {
         userID.setText(String.valueOf(id));
         first_name.setText(f);
         last_name.setText(l);
@@ -119,6 +124,7 @@ public class librarian1 implements Initializable {
     public ObservableList<book> data = FXCollections.observableArrayList();
     String st;
 
+
     @FXML
     public void filter(ActionEvent event) throws SQLException {
         table.getItems().clear();
@@ -126,8 +132,8 @@ public class librarian1 implements Initializable {
             Connect conn = new Connect();
 
             String choice = choiceBook.getSelectionModel().getSelectedItem().toString();
-            String input = filterField.getText().replace(" ","%20");
-            String result="";
+            String input = filterField.getText().replace(" ", "%20");
+            String result = "";
             switch (choice) {
                 case "author":
                     result = "dc.creator";
@@ -170,14 +176,14 @@ public class librarian1 implements Initializable {
                     Element err = (Element) errNodes.item(i);
                     i++;
                     PreparedStatement stat = conn.connection().prepareStatement("select * from loans where bookID=? and DATEDIFF(date_Return,date_Borrow)=25");
-                    stat.setString(1,err.getElementsByTagName("uri").item(0).getTextContent());
+                    stat.setString(1, err.getElementsByTagName("uri").item(0).getTextContent());
                     ResultSet res = stat.executeQuery();
-                    if (res.next()){
+                    if (res.next()) {
                         st = "not available";
-                    }else{
+                    } else {
                         st = "available";
                     }
-                    book book = new book(err.getElementsByTagName("uri").item(0).getTextContent(),err.getElementsByTagName("dc:title").item(0).getTextContent(),err.getElementsByTagName("dc:publisher").item(0).getTextContent(),err.getElementsByTagName("dc:date").item(0).getTextContent(),err.getElementsByTagName("dc:language").item(1).getTextContent(),st);
+                    book book = new book(err.getElementsByTagName("uri").item(0).getTextContent(), err.getElementsByTagName("dc:title").item(0).getTextContent(), err.getElementsByTagName("dc:publisher").item(0).getTextContent(), err.getElementsByTagName("dc:date").item(0).getTextContent(), err.getElementsByTagName("dc:language").item(1).getTextContent(), st);
                     data.add(book);
                 /*System.out.println("author : "+err.getElementsByTagName("dc:creator").item(0).getTextContent());
                 System.out.println("title : "+err.getElementsByTagName("dc:title").item(0).getTextContent());
@@ -190,8 +196,8 @@ public class librarian1 implements Initializable {
             } catch (Exception e) {
                 System.out.println(e);
             }
-        }catch (Exception e){
-            Alert alert= new Alert(Alert.AlertType.ERROR);
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("You should select a choice in FilterBox!");
             alert.showAndWait();
         }
@@ -323,11 +329,10 @@ public class librarian1 implements Initializable {
     private TableColumn<?, ?> titile1;
 
 
-
     @FXML
     public void searchBook(ActionEvent event) {
         try {
-            String url = "https://gallica.bnf.fr/services/OAIRecord?ark="+bookID.getText();
+            String url = "https://gallica.bnf.fr/services/OAIRecord?ark=" + bookID.getText();
             System.out.println(url);
             URL obj = new URL(url);
             HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -365,7 +370,7 @@ public class librarian1 implements Initializable {
     @FXML
     void searchStudent(ActionEvent event) throws SQLException {
         Connect con = new Connect();
-        try{
+        try {
             String sql = "select * from users where userID = ? and role='student' ";
             PreparedStatement stat = con.connection().prepareStatement(sql);
             stat.setString(1, userIDIssue.getText());
@@ -379,7 +384,7 @@ public class librarian1 implements Initializable {
                 alert.setContentText("There is no any student with this ID");
                 alert.showAndWait();
             }
-        }catch (Exception E){
+        } catch (Exception E) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setContentText("We don't have acces to database!");
             alert.showAndWait();
@@ -387,54 +392,52 @@ public class librarian1 implements Initializable {
         }
 
 
-
-
     }
 
     public void borrow(ActionEvent event) throws SQLException {
-            Connect con = new Connect();
-            try{
-                PreparedStatement statement1 = con.connection().prepareStatement("select * from loans where bookID = ? and DATEDIFF(loans.date_Return,loans.date_Borrow)=25");
-                statement1.setString(1,bookID.getText());
-                ResultSet res1 = statement1.executeQuery();
-                if (res1.next()){
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setContentText("This Book is not available!");
-                    alert.showAndWait();
-                }else{
-                    PreparedStatement statement = con.connection().prepareStatement("select * from loans where userID = ? and DATEDIFF(loans.date_Return,loans.date_Borrow)=25");
-                    statement.setString(1, userIDIssue.getText());
-                    ResultSet res = statement.executeQuery();
-                    int i=0;
-                    while (res.next()){
-                        i++;
-                    }
-                    if ( (i < 8) || (!res.next()) ){
-                        PreparedStatement stat = con.connection().prepareStatement("insert into loans values  (default ,?,?,?,?)");
-                        stat.setString(1,userIDIssue.getText());
-                        stat.setString(2,bookID.getText());
-                        stat.setString(3, String.valueOf(issue1DateIssue.getValue()));
-                        LocalDate date_return = issue1DateIssue.getValue().plusDays(25);
-                        stat.setString(4, String.valueOf(date_return));
-                        stat.execute();
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setContentText("Loan added succefuly !");
-                        alert.showAndWait();
-                    }else{
-                        Alert alert = new Alert(Alert.AlertType.ERROR);
-                        alert.setContentText("This student has borrowed 8 books already!");
-                        alert.showAndWait();
-                    }
-                }
-            }catch (Exception e){
+        Connect con = new Connect();
+        try {
+            PreparedStatement statement1 = con.connection().prepareStatement("select * from loans where bookID = ? and DATEDIFF(loans.date_Return,loans.date_Borrow)=25");
+            statement1.setString(1, bookID.getText());
+            ResultSet res1 = statement1.executeQuery();
+            if (res1.next()) {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Verify you entered all informations required!");
+                alert.setContentText("This Book is not available!");
                 alert.showAndWait();
+            } else {
+                PreparedStatement statement = con.connection().prepareStatement("select * from loans where userID = ? and DATEDIFF(loans.date_Return,loans.date_Borrow)=25");
+                statement.setString(1, userIDIssue.getText());
+                ResultSet res = statement.executeQuery();
+                int i = 0;
+                while (res.next()) {
+                    i++;
+                }
+                if ((i < 8) || (!res.next())) {
+                    PreparedStatement stat = con.connection().prepareStatement("insert into loans values  (default ,?,?,?,?)");
+                    stat.setString(1, userIDIssue.getText());
+                    stat.setString(2, bookID.getText());
+                    stat.setString(3, String.valueOf(issue1DateIssue.getValue()));
+                    LocalDate date_return = issue1DateIssue.getValue().plusDays(25);
+                    stat.setString(4, String.valueOf(date_return));
+                    stat.execute();
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setContentText("Loan added succefuly !");
+                    alert.showAndWait();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setContentText("This student has borrowed 8 books already!");
+                    alert.showAndWait();
+                }
             }
-
+        } catch (Exception e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Verify you entered all informations required!");
+            alert.showAndWait();
+        }
 
 
     }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     @FXML
     private TextField filterIssue;
@@ -474,13 +477,14 @@ public class librarian1 implements Initializable {
     private TableColumn<borrow, String> late;
     @FXML
     public ObservableList<borrow> dataLoan = FXCollections.observableArrayList();
+
     //////////////////////////////issue Table
     @FXML
-    public void issueTable(){
-        String l="";
+    public void issueTable() {
+        String l = "";
         //issue2SearchTableView.getItems().clear();
         Connect conn = new Connect();
-        try{
+        try {
             Statement stat = conn.connection().createStatement();
             ResultSet res = stat.executeQuery("select * from loans");
             while (res.next()) {
@@ -508,28 +512,27 @@ public class librarian1 implements Initializable {
                 PreparedStatement statement = conn.connection().prepareStatement("select * from users where userID =? ");
                 statement.setString(1, String.valueOf(res.getInt(2)));
                 ResultSet res1 = statement.executeQuery();
-                if (res1.next()){
+                if (res1.next()) {
                     LocalDate date = LocalDate.now();
-                    SimpleDateFormat sdf  = new SimpleDateFormat("yyyy-MM-dd");
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                     Date pdte = sdf.parse(String.valueOf(date));
                     long diff = res.getDate(5).getTime() - res.getDate(4).getTime();
-                    float days = (diff / (1000*60*60*24));
+                    float days = (diff / (1000 * 60 * 60 * 24));
 
-                    if ((res.getDate(5).before(pdte)) && days==25){
-                        l="X";
+                    if ((res.getDate(5).before(pdte)) && days == 25) {
+                        l = "X";
                     }
-                    borrow loan = new borrow(res.getString(3), err.getElementsByTagName("dc:title").item(0).getTextContent(), err.getElementsByTagName("dc:publisher").item(0).getTextContent(), err.getElementsByTagName("dc:date").item(0).getTextContent(), res.getInt(2), res1.getString(2), res1.getString(3), res.getString(4), res.getString(5),l);
+                    borrow loan = new borrow(res.getString(3), err.getElementsByTagName("dc:title").item(0).getTextContent(), err.getElementsByTagName("dc:publisher").item(0).getTextContent(), err.getElementsByTagName("dc:date").item(0).getTextContent(), res.getInt(2), res1.getString(2), res1.getString(3), res.getString(4), res.getString(5), l);
                     dataLoan.add(loan);
                 }
 
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setContentText("We can not upload issue table! some problme happend in api or database!");
             alert.show();
 
         }
-
 
 
     }
@@ -576,7 +579,7 @@ public class librarian1 implements Initializable {
                     return true; // Filter matches book title.
                 } else if (borrow.getFirst_name().toLowerCase().contains(lowerCaseFilter)) {
                     return true; // Filter matches first name.
-                }else if (borrow.getLast_name().toLowerCase().contains(lowerCaseFilter)) {
+                } else if (borrow.getLast_name().toLowerCase().contains(lowerCaseFilter)) {
                     return true; // Filter matches last name.
                 } else if (String.valueOf(borrow.getUserID()).contains(lowerCaseFilter))
                     return true; // Filter matches userID.
@@ -601,36 +604,35 @@ public class librarian1 implements Initializable {
     @FXML
     public void returnBook(ActionEvent event) throws SQLException {
         Connect conn = new Connect();
-        try{
+        try {
             PreparedStatement stat = conn.connection().prepareStatement("select * from loans where bookID = ? and DATEDIFF(loans.date_Return,loans.date_Borrow)=25 ");
             stat.setString(1, return1Bookid.getText());
             ResultSet res = stat.executeQuery();
-            if (res.next()){
-                if(return1ReturnDate.getValue().equals("")){
+            if (res.next()) {
+                if (return1ReturnDate.getValue().equals("")) {
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setContentText("please enter return Date!");
                     alert.showAndWait();
-                }else{
+                } else {
                     PreparedStatement statement = conn.connection().prepareStatement("update loans set date_Return = ? where idLoan = ?");
                     statement.setString(1, String.valueOf(return1ReturnDate.getValue()));
                     statement.setString(2, String.valueOf(res.getInt(1)));
-                    statement.execute( );
+                    statement.execute();
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                     alert.setContentText("retrun book succed");
                     alert.showAndWait();
 
                 }
-            }else{
+            } else {
                 Alert alert = new Alert(Alert.AlertType.WARNING);
                 alert.setContentText("please verify the book ID, There is no loan assigned !");
                 alert.showAndWait();
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("please Check if you entered all informations required!");
             alert.showAndWait();
         }
-
 
 
     }
@@ -641,6 +643,15 @@ public class librarian1 implements Initializable {
     public void refreshTable(ActionEvent event) {
     }
 
-    public void getAddView(ActionEvent event) {
+    public void getAddView(ActionEvent event) throws Exception {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/addUsers.fxml"));
+            Parent root1 = (Parent) fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root1));
+            stage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
