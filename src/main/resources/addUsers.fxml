@@ -8,8 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="384.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.addUser">   <children>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="486.0" prefWidth="414.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AddUserController">   <children>
       <HBox prefHeight="62.0" prefWidth="384.0">
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add an user to the table" wrappingWidth="181.25665283203125">
@@ -78,17 +77,30 @@
             <Insets top="25.0" />
          </VBox.margin>
       </HBox>
+      <HBox>
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password" wrappingWidth="116.53674697875977" />
+            <TextField fx:id="password_tf" prefHeight="26.0" prefWidth="359.0">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin>
+            </TextField>
+         </children>
+         <VBox.margin>
+            <Insets top="25.0" />
+         </VBox.margin>
+      </HBox>
       <HBox alignment="CENTER" prefHeight="73.0" prefWidth="384.0">
          <VBox.margin>
             <Insets top="25.0" />
          </VBox.margin>
          <children>
-            <Button fx:id="saveButton" layoutX="10.0" mnemonicParsing="false" onMouseClicked="#save" prefHeight="40.0" prefWidth="100.0" text="Save">
+            <Button fx:id="saveButton" layoutX="10.0" mnemonicParsing="false" onAction="#saveAddButton" onMouseClicked="#save" prefHeight="40.0" prefWidth="100.0" text="Save">
                <HBox.margin>
                   <Insets right="50.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="cancelButton" layoutX="152.0" layoutY="27.0" mnemonicParsing="false" onMouseClicked="#cancel" prefHeight="40.0" prefWidth="100.0" text="Cancel" />
+            <Button fx:id="cancelButton" layoutX="152.0" layoutY="27.0" mnemonicParsing="false" onAction="#cancelAddButton" onMouseClicked="#cancel" prefHeight="40.0" prefWidth="100.0" text="Cancel" />
          </children>
       </HBox>
    </children>
