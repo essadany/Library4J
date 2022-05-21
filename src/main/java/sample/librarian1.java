@@ -710,11 +710,11 @@ public class librarian1 implements Initializable {
     public ObservableList<user> dataUser = FXCollections.observableArrayList();
 
     public void refreshTable(ActionEvent event) {
+
         //userTable.getItems().removeAll();
         int j=0;
         Connect conn = new Connect();
         try {
-
             Statement ps = conn.connection().createStatement();
             ResultSet resUser = ps.executeQuery("select * from users");
             while (resUser.next()) {

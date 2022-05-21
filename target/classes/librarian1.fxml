@@ -126,15 +126,8 @@
                           </columns>
                       </TableView>
                       <Label layoutX="92.0" layoutY="14.0" prefHeight="17.0" prefWidth="138.0" text="Search an user" />
-                      <Button fx:id="searchButton" layoutX="852.0" layoutY="10.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="54.0" />
-                      <ImageView fitHeight="31.0" fitWidth="36.0" layoutX="866.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                          <image>
-                              <Image url="@loupe.png" />
-                          </image>
-                      </ImageView>
                       <TextField fx:id="searchuser_tf" layoutX="175.0" layoutY="10.0" prefHeight="25.0" prefWidth="664.0" promptText="Search..." />
                       <Label layoutX="105.0" layoutY="46.0" text="Filter" />
-                      <ChoiceBox layoutX="175.0" layoutY="42.0" prefWidth="150.0" />
                       <Button fx:id="addButton" layoutX="100.0" layoutY="152.0" mnemonicParsing="false" onAction="#getAddView" prefHeight="25.0" prefWidth="108.0" text="Add an user " />
                       <Button fx:id="renewButton" layoutX="250.0" layoutY="152.0" mnemonicParsing="false" onAction="#refreshTable" prefHeight="25.0" prefWidth="108.0" text="Renew table" />
                   </children>
