@@ -482,7 +482,6 @@ public class librarian1 implements Initializable {
     @FXML
     public void issueTable() {
         String l = "";
-        //issue2SearchTableView.getItems().clear();
         Connect conn = new Connect();
         try {
             Statement stat = conn.connection().createStatement();
@@ -562,6 +561,7 @@ public class librarian1 implements Initializable {
         issuedate.setCellValueFactory(new PropertyValueFactory<borrow, String>("issue_date"));
         limitdate.setCellValueFactory(new PropertyValueFactory<borrow, String>("return_date"));
         late.setCellValueFactory(new PropertyValueFactory<borrow, String>("late"));
+
         ///////////////////////////////////////////////////////////////////////
         // Wrap the ObservableList in a FilteredList (initially display all data).
         FilteredList<borrow> filteredData = new FilteredList<>(dataLoan, b -> true);
@@ -618,7 +618,7 @@ public class librarian1 implements Initializable {
                     statement.setString(1, String.valueOf(return1ReturnDate.getValue()));
                     statement.setString(2, String.valueOf(res.getInt(1)));
                     statement.execute();
-                    Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setContentText("retrun book succed");
                     alert.showAndWait();
 
