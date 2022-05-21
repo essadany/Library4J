@@ -97,10 +97,9 @@
          <children>
             <Button fx:id="saveButton" layoutX="10.0" mnemonicParsing="false" onAction="#saveAddButton" onMouseClicked="#save" prefHeight="40.0" prefWidth="100.0" text="Save">
                <HBox.margin>
-                  <Insets right="50.0" />
+                  <Insets left="50.0" right="50.0" />
                </HBox.margin>
             </Button>
-            <Button fx:id="cancelButton" layoutX="152.0" layoutY="27.0" mnemonicParsing="false" onAction="#cancelAddButton" onMouseClicked="#cancel" prefHeight="40.0" prefWidth="100.0" text="Cancel" />
          </children>
       </HBox>
    </children>

@@ -17,8 +17,7 @@ public class AddUserController {
     @FXML
     private TextField adress_tf;
 
-    @FXML
-    private Button cancelButton;
+
     
     @FXML
     private TextField password_tf;
@@ -90,11 +89,5 @@ public class AddUserController {
             return;
         }
 
-    @FXML
-    void cancelAddButton(ActionEvent event){
-
-    }
-    public static class JavaMysqlSelect {
-    }
 
 }
