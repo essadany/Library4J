@@ -681,9 +681,9 @@ public class librarian1 implements Initializable {
 
     public void refreshTable(ActionEvent event) {
 
-        Connect conn = new Connect();
+        userTable.getItems().clear();
         try {
-
+            Connect conn = new Connect();
             PreparedStatement ps = conn.connection().prepareStatement("select * from users");
             ResultSet resUser = ps.executeQuery();
             while (resUser.next()) {
