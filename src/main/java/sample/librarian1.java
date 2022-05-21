@@ -562,6 +562,14 @@ public class librarian1 implements Initializable {
         limitdate.setCellValueFactory(new PropertyValueFactory<borrow, String>("return_date"));
         late.setCellValueFactory(new PropertyValueFactory<borrow, String>("late"));
 
+        ////////////////////ManageUser////////////////////////////////////////////////
+
+        idManageUser.setCellValueFactory(new PropertyValueFactory<user, Integer>("userID"));
+        f_name.setCellValueFactory(new PropertyValueFactory<user, String>("first_name"));
+        l_name.setCellValueFactory(new PropertyValueFactory<user, String>("last_name"));
+        adressManageUser.setCellValueFactory(new PropertyValueFactory<user, String>("adress"));
+        //bookborrowed.setCellValueFactory(new PropertyValueFactory<user, Integer>("bookBorrowed"));
+
         ///////////////////////////////////////////////////////////////////////
         // Wrap the ObservableList in a FilteredList (initially display all data).
         FilteredList<borrow> filteredData = new FilteredList<>(dataLoan, b -> true);
@@ -596,6 +604,7 @@ public class librarian1 implements Initializable {
         issue2SearchTableView.setItems(sortedData);
         choiceBook.setItems(list);
         table.setItems(data);
+        userTable.setItems(dataUser);
 
 
     }
@@ -640,7 +649,64 @@ public class librarian1 implements Initializable {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////
 
     ///////////////////////////////////////Manage users
+    @FXML
+    private Button addButton;
+
+    @FXML
+    private TableColumn<user, String> adressManageUser;
+
+    @FXML
+    private TableColumn<user, String> f_name;
+
+    @FXML
+    private TableColumn<user, Integer> idManageUser;
+
+    @FXML
+    private TableColumn<user, String> l_name;
+
+    //@FXML
+    //private TableColumn<user, Integer> bookborrowed;
+
+    @FXML
+    private Button searchButton;
+
+    @FXML
+    private TextField searchuser_tf;
+
+    @FXML
+    private TableView<user> userTable;
+
+    @FXML
+    public ObservableList<user> dataUser = FXCollections.observableArrayList();
+
     public void refreshTable(ActionEvent event) {
+
+        Connect conn = new Connect();
+        try {
+
+            PreparedStatement ps = conn.connection().prepareStatement("select * from users");
+            ResultSet resUser = ps.executeQuery();
+            while (resUser.next()) {
+
+                user display = new user(resUser.getInt(1),resUser.getString(2), resUser.getString(3),resUser.getString(4)); //resUser.getEnum(6));
+                dataUser.add(display);
+
+                /*PreparedStatement ps2 = conn.connection().prepareStatement("select count(*) as bookBorrowed from users where userID =(select userID from loans) ");
+                ResultSet resCount = ps2.executeQuery();
+                if (resCount.next()){
+
+                    resCount.getInt("bookBorrowed");
+
+                }*/
+            }
+
+        }catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("please Check if you entered all informations required!");
+            alert.showAndWait();
+        }
+
+
     }
 
     public void getAddView(ActionEvent event) throws Exception {

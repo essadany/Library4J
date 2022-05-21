@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.librarian1">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.librarian1">
   <tabs>
     <Tab text="My profile">
       <content>
@@ -121,9 +137,8 @@
                               <TableColumn fx:id="idManageUser" prefWidth="75.0" text="Id" />
                               <TableColumn fx:id="f_name" prefWidth="200.0" text="First Name" />
                               <TableColumn fx:id="l_name" prefWidth="200.0" text="Last Name" />
-                              <TableColumn fx:id="adressManageUser" prefWidth="225.0" text="Adress" />
-                              <TableColumn fx:id="roleManageUser" prefWidth="100.0" text="Role" />
-                              <TableColumn fx:id="action" prefWidth="83.4000244140625" text="Action" />
+                              <TableColumn fx:id="adressManageUser" prefWidth="292.7999267578125" text="Adress" />
+                        <TableColumn fx:id="bookborrowed" prefWidth="116.0001220703125" text="Book Borrowed" />
                           </columns>
                       </TableView>
                       <Label layoutX="92.0" layoutY="14.0" prefHeight="17.0" prefWidth="138.0" text="Search an user" />

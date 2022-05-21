@@ -35,6 +35,14 @@ public class user {
         this.userID = userID;
     }
 
+    public user(int userID, String first_name, String last_name,String adress) {
+
+        this.adress = adress;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.userID = userID;
+    }
+
     public user() {
         super();
     }
