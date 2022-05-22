@@ -11,12 +11,13 @@ These are some screens from the application :
 
 ![Screenshot (233)](https://user-images.githubusercontent.com/100642085/169689232-68be273f-4ae0-4bb6-8805-c8eca66df395.png)
 
-![Screenshot (211)](https://user-images.githubusercontent.com/100642085/169689278-7f46ef86-8f18-4655-8936-975f20f1b536.png)
+![Screenshot (234)](https://user-images.githubusercontent.com/100642085/169689434-9d9c45f4-a7ee-4751-896d-18585365d4ac.png)
 
-![Screenshot (213)](https://user-images.githubusercontent.com/100642085/169689312-4f1d1823-2fb6-4d81-a1e2-1917d0500c18.png)
+![Screenshot (235)](https://user-images.githubusercontent.com/100642085/169689471-3a8d8653-7061-4382-93e9-2580d7d915e1.png)
 
-![Screenshot (212)](https://user-images.githubusercontent.com/100642085/169689321-067200c7-09da-436b-a45c-5eabbc4cd50b.png)
+![Screenshot (236)](https://user-images.githubusercontent.com/100642085/169689508-51f9e77c-d098-452b-bcbc-a6b15145d704.png)
 
-![Screenshot (230)](https://user-images.githubusercontent.com/100642085/169689339-2ffd7d4b-7c03-4d8e-bb54-3f78c3e773a9.png)
+![Screenshot (237)](https://user-images.githubusercontent.com/100642085/169689561-593d1177-f058-4c4e-916a-8a3e3ac7f326.png)
 
-![Screenshot (217)](https://user-images.githubusercontent.com/100642085/169689354-00b7b3a8-7bbc-412b-9232-5f1eae5f5e27.png)
+![Screenshot (238)](https://user-images.githubusercontent.com/100642085/169689610-e38af13d-c50b-460f-9c3b-dd379f055477.png)
+
