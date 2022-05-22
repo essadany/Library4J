@@ -10,8 +10,7 @@ These are some screens from the application :
 
 ![Screenshot (232)](https://user-images.githubusercontent.com/100642085/169689178-ca9153c0-4515-4e89-8029-e9a3e3e1cce1.png)
 
-
-![Screenshot (233)](https://user-images.githubusercontent.com/100642085/169689232-68be273f-4ae0-4bb6-8805-c8eca66df395.png)
+![Screenshot (240)](https://user-images.githubusercontent.com/100642085/169698853-a19b8cd9-6ad8-49d8-aa72-5282c6faab7d.png)
 
 
 ![Screenshot (234)](https://user-images.githubusercontent.com/100642085/169689434-9d9c45f4-a7ee-4751-896d-18585365d4ac.png)
