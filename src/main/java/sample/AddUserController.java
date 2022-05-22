@@ -35,16 +35,8 @@ public class AddUserController {
     private Button saveButton;
 
     @FXML
-    void cancel(MouseEvent event) {
-
-    }
-
-    @FXML
-    void save(MouseEvent event) {
-
-    }
-    @FXML
     void saveAddButton(ActionEvent event){
+        Connect conn = new Connect();
         String firstname = firstname_tf.getText();
         String lastname = lastname_tf.getText();
         String role = role_tf.getText();
@@ -62,22 +54,15 @@ public class AddUserController {
 
             try
             {
-                int id = 55;
-                // create our mysql database connection
-                // String myDriver = "org.gjt.mm.mysql.Driver";
-                String myDriver = "com.mysql.cj.jdbc.Driver";
-                String myUrl = "jdbc:mysql://localhost/library";
-                Class.forName(myDriver);
-                Connection conn = DriverManager.getConnection(myUrl, "root", "");
-                Statement stAddUser = conn.createStatement();
-                stAddUser.execute("INSERT INTO users VALUES(" +
-                        "'" + id + "'," +
-                        "'" + firstname + "'," +
-                        "'" + lastname + "'," +
-                        "'" + adress + "'," +
-                        "'" + password + "'," +
-                        "'" + role + "');") ;
-                id +=1;
+
+
+                PreparedStatement stAddUser = conn.connection().prepareStatement("INSERT INTO users VALUES(default,?,?,?,?,?)");
+                stAddUser.setString(1,firstname);
+                stAddUser.setString(2,lastname);
+                stAddUser.setString(3,adress);
+                stAddUser.setString(4,password);
+                stAddUser.setString(5,role);
+                stAddUser.execute();
 
             }
             catch (Exception e)
@@ -85,9 +70,13 @@ public class AddUserController {
                 System.err.println("Got an exception! ");
                 System.err.println(e.getMessage());
             }
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText("User added succefuly!");
+            alert.showAndWait();
         }
-            return;
-        }
+
+    }
 
 
 }

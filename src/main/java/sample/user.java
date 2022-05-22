@@ -110,44 +110,51 @@ public class user {
     Label isConnected;
 
     setScene scene= new setScene();
-    public void authentificate(ActionEvent event) throws IOException, SQLException {
+    public void authentificate(ActionEvent event)  {
         Connect con = new Connect();
-        String sql = "select * from users where adress = ? and password = ? ";
-        PreparedStatement stat = con.connection().prepareStatement(sql);
-        String adressEntred = inputAdress.getText();
-        String pwdEntred = inputPwd.getText();
-        stat.setString(1, adressEntred);
-        stat.setString(2, pwdEntred);
-        ResultSet rs = stat.executeQuery();
-        //if the informations of user are corrects
-        if (rs.next()) {
-            String path;
-            Parent root;
-            Stage stage;
-            //Show user interface
-            if (rs.getString("role").equals("student")){
-                path="/student1.fxml";
-                FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
-                root = loader.load();
-                student1 controller = loader.getController();
-                controller.setUserProfile(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(6));
-                role = "student";
+        try{
+            String sql = "select * from users where adress = ? and password = ? ";
+            PreparedStatement stat = con.connection().prepareStatement(sql);
+            String adressEntred = inputAdress.getText();
+            String pwdEntred = inputPwd.getText();
+            stat.setString(1, adressEntred);
+            stat.setString(2, pwdEntred);
+            ResultSet rs = stat.executeQuery();
+            //if the informations of user are corrects
+            if (rs.next()) {
+                String path;
+                Parent root;
+                Stage stage;
+                //Show user interface
+                if (rs.getString("role").equals("student")){
+                    path="/student1.fxml";
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+                    root = loader.load();
+                    student1 controller = loader.getController();
+                    controller.setUserProfile(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(6));
+                    role = "student";
 
-            } else {
-                path="/librarian1.fxml";
-                FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
-                root = loader.load();
-                librarian1 controller = loader.getController();
-                controller.setUserProfile(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(6));
-                role = "librarian";
+                } else {
+                    path="/librarian1.fxml";
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+                    root = loader.load();
+                    librarian1 controller = loader.getController();
+                    controller.setUserProfile(rs.getInt(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getString(6));
+                    role = "librarian";
+                }
+                Scene scene = new Scene(root,1000,700);
+                stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                stage.setScene(scene);
+
+            }else {
+                isConnected.setText("adress or password wrong, please try again");
             }
-            Scene scene = new Scene(root,1000,700);
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            stage.setScene(scene);
-
-        }else {
-            isConnected.setText("adress or password wrong, please try again");
+        } catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("please Connect to database!");
+            alert.show();
         }
+
 
 
 

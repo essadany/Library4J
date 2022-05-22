@@ -481,10 +481,12 @@ public class librarian1 implements Initializable {
     //////////////////////////////issue Table
     @FXML
     public void issueTable() {
-        //issue2SearchTableView.refresh();
+
         String l = "";
         Connect conn = new Connect();
+        //issue2SearchTableView.getItems().clear();
         try {
+
             Statement stat = conn.connection().createStatement();
             ResultSet res = stat.executeQuery("select * from loans");
             while (res.next()) {
@@ -705,7 +707,8 @@ public class librarian1 implements Initializable {
 
     @FXML
     private TableView<user> userTable;
-
+    @FXML
+    private TextField deleteInput;
     @FXML
     public ObservableList<user> dataUser = FXCollections.observableArrayList();
 
@@ -751,5 +754,23 @@ public class librarian1 implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    @FXML
+    public void deleteUser(){
+        Connect conn = new Connect();
+        try{
+            PreparedStatement sta = conn.connection().prepareStatement("delete from users where userID = ?");
+            sta.setString(1, deleteInput.getText());
+            sta.execute();
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("User deleted!");
+            alert.showAndWait();
+        }catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("Check if the user ID is correct!");
+            alert.showAndWait();
+        }
+
+
     }
 }
