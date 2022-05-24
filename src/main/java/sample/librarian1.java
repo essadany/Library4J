@@ -412,7 +412,7 @@ public class librarian1 implements Initializable {
                 while (res.next()) {
                     i++;
                 }
-                if ((i < 8) || (!res.next())) {
+                if ((i < 8)) {
                     PreparedStatement stat = con.connection().prepareStatement("insert into loans values  (default ,?,?,?,?)");
                     stat.setString(1, userIDIssue.getText());
                     stat.setString(2, bookID.getText());
